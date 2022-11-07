@@ -58,8 +58,6 @@ public class Shape {
         this.group = group;
     }
 
-    // TODO: Method-setPosition
-
     /**
      * setPentagonPosition: 从最上方顶点开始，按照逆时针方向依次计算五个顶点坐标，并存储到pos数组中
      */
@@ -118,4 +116,47 @@ public class Shape {
         };
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public Color getFillColor() {
+        return fillColor;
+    }
+
+    public BasicStroke getStroke() {
+        return stroke;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public int[] getPosX() {
+        return posX;
+    }
+
+    public int[] getPosY() {
+        return posY;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public int getStartAngle() {
+        return startAngle;
+    }
+
+    public int getDrawAngle() {
+        return drawAngle;
+    }
+
+    public BasicTools getShape() {
+        return shape;
+    }
+
+    public Font getFont() {
+        return font;
+    }
 }
