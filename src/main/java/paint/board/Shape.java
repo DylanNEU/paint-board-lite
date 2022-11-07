@@ -15,7 +15,7 @@ public class Shape {
     // 线条颜色
     private Color color;
     // 填充颜色
-    private Color fillColor;
+    private Color filledColor;
 
     // 渲染器
     private BasicStroke stroke;
@@ -120,8 +120,8 @@ public class Shape {
         return color;
     }
 
-    public Color getFillColor() {
-        return fillColor;
+    public Color getFilledColor() {
+        return filledColor;
     }
 
     public BasicStroke getStroke() {

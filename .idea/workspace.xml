@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 新增多边形顶点位置计算方法，包括三角形、五边形、六边形。">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 添加shape的getter函数">
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
     </list>
@@ -60,7 +62,7 @@
       <workItem from="1667747955130" duration="3306000" />
       <workItem from="1667786874970" duration="1914000" />
       <workItem from="1667804797486" duration="1547000" />
-      <workItem from="1667806388955" duration="3679000" />
+      <workItem from="1667806388955" duration="11523000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -90,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667807347783</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Dylan commit: 添加shape的getter函数">
+      <created>1667821286464</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1667821286464</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -108,10 +117,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="Dylan commit: 新建了Shape形状类, BasicTools枚举。&#10;TODO: complete Shape Class, add setPosition method." />
     <MESSAGE value="Dylan commit: 新增多边形顶点位置计算方法，包括三角形、五边形、六边形。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 新增多边形顶点位置计算方法，包括三角形、五边形、六边形。" />
+    <MESSAGE value="Dylan commit: 添加shape的getter函数" />
+    <MESSAGE value="Dylan commit:" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit:" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
