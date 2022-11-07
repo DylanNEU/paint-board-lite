@@ -23,8 +23,8 @@ public class Shape {
     private String message;
 
     // 多边形各顶点坐标（顺时针）
-    private int[] pointsX;
-    private int[] pointsY;
+    private int[] posX;
+    private int[] posY;
 
     // 圆弧用
     private Rectangle rectangle;
@@ -56,6 +56,66 @@ public class Shape {
         this.stroke = stroke;
         this.shape = shape;
         this.group = group;
+    }
+
+    // TODO: Method-setPosition
+
+    /**
+     * setPentagonPosition: 从最上方顶点开始，按照逆时针方向依次计算五个顶点坐标，并存储到pos数组中
+     */
+    private void setPentagonPosition() {
+        this.posX = new int[]{
+                x1 + x2 / 2,  // 最上方的顶点
+                x1, // 最左顶点
+                x1 + (int) (x2 / 4.3), // 左下底边顶点
+                x1 + (int) (x2 * 3.3 / 4.3), // 右下底边顶点
+                x1 + x2  // 最右顶点
+        };
+        this.posY = new int[]{
+                y1, // 最上的顶点
+                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * y2), // 最左边顶点
+                y1 + y2, // 最下底边的两个顶点
+                y1 + y2,
+                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * y2)  // 最右边顶点
+        };
+    }
+
+    /**
+     * setHexagonPosition: 从左上方顶点开始，按照逆时针方向依次计算六个顶点坐标，并存储到pos数组中
+     */
+    private void setHexagonPosition() {
+        this.posX = new int[]{
+                x1 + x2 / 4,
+                x1,
+                x1 + x2 / 4,
+                x1 + x2 * 3 / 4,
+                x1 + x2,
+                x1 + x2 * 3 / 4
+        };
+        this.posY = new int[]{
+                y1,
+                y1 + y2 / 2,
+                y1 + y2,
+                y1 + y2,
+                y1 + y2 / 2,
+                y1
+        };
+    }
+
+    /**
+     * setTrianglePosition: 从上方顶点开始，按照逆时针方向依次计算三个顶点坐标，并存储到pos数组中
+     */
+    private void setTrianglePosition() {
+        this.posX = new int[]{
+                x1 + x2 / 2,
+                x1,
+                x1 + x2
+        };
+        this.posY = new int[]{
+                y1,
+                y1 + y2,
+                y1 + y2
+        };
     }
 
 }
