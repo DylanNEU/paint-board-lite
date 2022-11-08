@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 添加shape的getter函数">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 新增主窗口（未完成，正在设计中）">
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="paint.board" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Java\JavaProjects\PaintBoardLite" />
     </key>
@@ -62,7 +65,8 @@
       <workItem from="1667747955130" duration="3306000" />
       <workItem from="1667786874970" duration="1914000" />
       <workItem from="1667804797486" duration="1547000" />
-      <workItem from="1667806388955" duration="11523000" />
+      <workItem from="1667806388955" duration="11723000" />
+      <workItem from="1667878379256" duration="3933000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -99,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667821286464</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Dylan commit: 新增主窗口（未完成，正在设计中）">
+      <created>1667837600258</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1667837600258</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,12 +129,14 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="Dylan commit: 新建了Shape形状类, BasicTools枚举。&#10;TODO: complete Shape Class, add setPosition method." />
     <MESSAGE value="Dylan commit: 新增多边形顶点位置计算方法，包括三角形、五边形、六边形。" />
     <MESSAGE value="Dylan commit: 添加shape的getter函数" />
     <MESSAGE value="Dylan commit:" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit:" />
+    <MESSAGE value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
