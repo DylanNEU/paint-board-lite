@@ -37,6 +37,11 @@ public class MenuItemActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String name = ((JMenuItem) e.getSource()).getName();
+        if (name.equals("newFile")) {
+            Main.mainWindow.createNewCanvas();
+        } else if (name.equals("openFile")) {
 
+        }
     }
 }

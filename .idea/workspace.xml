@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 新增主窗口（未完成，正在设计中）">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法">
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/NewFileDialogFocusTraversalPolicy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +56,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Java\JavaProjects\PaintBoardLite" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="paint.board" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,7 +72,7 @@
       <workItem from="1667786874970" duration="1914000" />
       <workItem from="1667804797486" duration="1547000" />
       <workItem from="1667806388955" duration="11723000" />
-      <workItem from="1667878379256" duration="3933000" />
+      <workItem from="1667878379256" duration="12493000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -110,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667837600258</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法">
+      <created>1667888776644</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1667888776644</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,7 +149,8 @@
     <MESSAGE value="Dylan commit: 添加shape的getter函数" />
     <MESSAGE value="Dylan commit:" />
     <MESSAGE value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
+    <MESSAGE value="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
