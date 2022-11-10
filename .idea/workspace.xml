@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/NewFileDialogFocusTraversalPolicy.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/ArcStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/Vec3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
@@ -42,13 +42,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="paint.board" />
@@ -72,7 +73,9 @@
       <workItem from="1667786874970" duration="1914000" />
       <workItem from="1667804797486" duration="1547000" />
       <workItem from="1667806388955" duration="11723000" />
-      <workItem from="1667878379256" duration="12493000" />
+      <workItem from="1667878379256" duration="12572000" />
+      <workItem from="1667922901013" duration="50000" />
+      <workItem from="1668045008297" duration="10160000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -123,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667888776644</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java">
+      <created>1667913467360</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667913467360</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,7 +160,8 @@
     <MESSAGE value="Dylan commit:" />
     <MESSAGE value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
     <MESSAGE value="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法" />
+    <MESSAGE value="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

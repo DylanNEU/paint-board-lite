@@ -13,7 +13,11 @@ public class MenuItemActionListener implements ActionListener {
 
     private void openImage(File f) {
         // todo: openImage method needs a method to get draw panel listener.
-
+        try {
+            Main.mainWindow.getCanvas().setImage(ImageIO.read(f));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -41,7 +45,10 @@ public class MenuItemActionListener implements ActionListener {
         if (name.equals("newFile")) {
             Main.mainWindow.createNewCanvas();
         } else if (name.equals("openFile")) {
-
+            JFileChooser fileChooser = new JFileChooser(new File("."));
+            // unfinished.
+            // 今晚太困了，写到这吧。
+            // 明天继续。
         }
     }
 }

@@ -58,6 +58,39 @@ public class Shape {
         this.group = group;
     }
 
+    public Shape(int x1, int y1, int x2, int y2, Color color, BasicStroke stroke, BasicTools shape, Color fill, boolean isTransparent) {
+        this.x1 = x1;
+        this.x2 = x2;
+        this.y1 = y1;
+        this.y2 = y2;
+        this.color = color;
+        this.stroke = stroke;
+        this.shape = shape;
+        this.group = 0;
+        this.filledColor = fill;
+        this.transparent = isTransparent;
+        if (shape == BasicTools.PENTAGON) {
+            setPentagonPosition();
+        }
+        if (shape == BasicTools.HEXAGON) {
+            setHexagonPosition();
+        }
+        if (shape == BasicTools.TRIANGLE) {
+            setTrianglePosition();
+        }
+    }
+
+    public Shape(Rectangle rectangle, Color c1, BasicStroke stroke, BasicTools arc, Color fill, boolean isTransparent, int startAngle, int drawAngle) {
+        this.rectangle = rectangle;
+        this.color = c1;
+        this.stroke = stroke;
+        this.shape = arc;
+        this.filledColor = fill;
+        this.transparent = isTransparent;
+        this.startAngle = startAngle;
+        this.drawAngle = drawAngle;
+    }
+
     /**
      * setPentagonPosition: 从最上方顶点开始，按照逆时针方向依次计算五个顶点坐标，并存储到pos数组中
      */

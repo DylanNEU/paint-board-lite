@@ -8,6 +8,9 @@ import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
 import java.util.Stack;
 
+import static paint.board.ArcStatus.*;
+import static paint.board.BasicTools.*;
+
 public class CanvasPanelListener extends JPanel implements MouseListener, MouseMotionListener {
 
     public static boolean isInCanvas = false;
@@ -15,7 +18,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     private boolean dragged = false;
     private Color currentColor;
     private Color lastColor;
-    private int group;
+    private int grouped;
     private boolean isTransparent;
     private BasicStroke stroke = new BasicStroke(2);
     private Stack<Shape> shapes;
@@ -26,11 +29,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     // todo: add Text Dialog window and so on.
 //    private TextDialog textDialog;
     private BasicTools actTool;
-    //    private ArcStatus drawStatus = ArcStatus.NOT_DRAWING;
-//    private ArcStatus direction = ArcStatus.NO_DIRECTION;
+    private ArcStatus drawStatus = NOT_DRAWING;
+    private ArcStatus direction = NO_DIRECTION;
     private Dimension center, startPoint;
-    //    private int radius;
-//    private Vector3 benchmark;
+    private int radius;
+    private Vec3 benchmark;
     private Rectangle rectangle;
 
     public CanvasPanelListener(int x, int y) {
@@ -44,7 +47,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         addMouseListener(this);
         addMouseMotionListener(this);
         requestFocus();
-        actTool = BasicTools.PENCIL;
+        actTool = PENCIL;
         currentColor = Color.BLACK;
         lastColor = Color.WHITE;
 //        todo: complete text dialog.
@@ -52,7 +55,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         this.shapes = new Stack<>();
         this.removed = new Stack<>();
         this.preview = new Stack<>();
-        this.group = 1;
+        this.grouped = 1;
         this.isTransparent = true;
     }
 
@@ -87,46 +90,46 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             g2.setColor(s.getColor());
             g2.setStroke(s.getStroke());
 
-            if (s.getShape() == BasicTools.LINE) {
+            if (s.getShape() == LINE) {
                 g2.drawLine(s.getX1(), s.getY1(), s.getX2(), s.getY2());
-            } else if (s.getShape() == BasicTools.RECTANGLE) {
+            } else if (s.getShape() == RECTANGLE) {
                 g2.drawRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 }
-            } else if (s.getShape() == BasicTools.ELLIPTICAL) {
+            } else if (s.getShape() == ELLIPTICAL) {
                 g2.drawOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 }
-            } else if (s.getShape() == BasicTools.PENTAGON) {
+            } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 5);
                 }
-            } else if (s.getShape() == BasicTools.HEXAGON) {
+            } else if (s.getShape() == HEXAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 6);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 6);
                 }
-            } else if (s.getShape() == BasicTools.TRIANGLE) {
+            } else if (s.getShape() == TRIANGLE) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 3);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 3);
                 }
-            } else if (s.getShape() == BasicTools.ARC) {
+            } else if (s.getShape() == ARC) {
                 g2.drawArc(s.getRectangle().x, s.getRectangle().y, s.getRectangle().width, s.getRectangle().height,
                         s.getStartAngle(), s.getDrawAngle());
                 if (!s.transparent) {
                     g2.fillArc(s.getRectangle().x, s.getRectangle().y, s.getRectangle().width, s.getRectangle().height,
                             s.getStartAngle(), s.getDrawAngle());
                 }
-            } else if (s.getShape() == BasicTools.TEXT) {
+            } else if (s.getShape() == TEXT) {
                 g2.setFont(s.getFont());
                 g2.drawString(s.getMessage(), s.getX1(), s.getY1());
             }
@@ -135,39 +138,39 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             Shape s = preview.peek();
             g2.setColor(s.getColor());
             g2.setStroke(s.getStroke());
-            if (s.getShape() == BasicTools.LINE) {
+            if (s.getShape() == LINE) {
                 g2.drawLine(s.getX1(), s.getY1(), s.getX2(), s.getY2());
-            } else if (s.getShape() == BasicTools.RECTANGLE) {
+            } else if (s.getShape() == RECTANGLE) {
                 g2.drawRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 }
-            } else if (s.getShape() == BasicTools.ELLIPTICAL) {
+            } else if (s.getShape() == ELLIPTICAL) {
                 g2.drawOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
                 }
-            } else if (s.getShape() == BasicTools.PENTAGON) {
+            } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 5);
                 }
-            } else if (s.getShape() == BasicTools.HEXAGON) {
+            } else if (s.getShape() == HEXAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 6);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 6);
                 }
-            } else if (s.getShape() == BasicTools.TRIANGLE) {
+            } else if (s.getShape() == TRIANGLE) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 3);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 3);
                 }
-            } else if (s.getShape() == BasicTools.ARC) {
+            } else if (s.getShape() == ARC) {
                 var rec = s.getRectangle();
                 g2.drawArc(rec.x, rec.y, rec.width, rec.height, s.getStartAngle(), s.getDrawAngle());
                 if (!s.transparent) {
@@ -212,38 +215,236 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         graphics2D.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
     }
 
+    public void setColor(Color color) {
+        lastColor = currentColor;
+        currentColor = color;
+        graphics2D.setColor(color);
+    }
+
+    public void setThickness(float f) {
+        stroke = new BasicStroke(f);
+        graphics2D.setStroke(stroke);
+    }
+
+    public void setTransparent(Boolean b) {
+        this.isTransparent = b;
+    }
+
+    public Color getCurrentColor() {
+        return currentColor;
+    }
+
+    public int getDistance(Dimension d1, Dimension d2) {
+        return (int) Math.sqrt((d1.height - d2.height) * (d1.height - d2.height) + (d1.width - d2.width) * (d1.width - d2.width));
+    }
+
+    // todo: shape fill
+
+    public void undo() {
+        if (shapes.size() == 0) {
+            return;
+        }
+
+        Shape last = shapes.pop();
+        removed.push(last);
+
+        if (last.group == 0) {
+            repaint();
+        } else {
+            while (!shapes.isEmpty() && shapes.peek().group == last.group) {
+                removed.push(shapes.pop());
+                repaint();
+            }
+        }
+    }
+
+    public void redo() {
+        if (removed.size() > 0 && removed.peek().group == 0) {
+            shapes.push(removed.pop());
+            repaint();
+        } else if (removed.size() > 0 && removed.peek().group != 0) {
+            Shape last = removed.pop();
+            shapes.push(last);
+            while (!removed.isEmpty() && removed.peek().group == last.group) {
+                shapes.push(removed.pop());
+                repaint();
+            }
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        if (actTool == ARC) {
+//            System.out.println(drawStatus);
+            if (drawStatus == NOT_DRAWING) {
+                center = new Dimension(e.getX(), e.getY());
+                drawStatus = DEFINED_CENTER;
+            } else if (drawStatus == DEFINED_CENTER) {
+                startPoint = new Dimension(e.getX(), e.getY());
+                radius = getDistance(startPoint, center);
+                benchmark = new Vec3(startPoint.width - center.width, -startPoint.height + center.height, 0);
+                drawStatus = DEFINED_R;
+                rectangle = new Rectangle(center.width - radius, center.height - radius,
+                        2 * radius, 2 * radius);
+            } else if (drawStatus == DEFINED_R) {
+                if (preview.size() != 0) {
+                    shapes.push(preview.pop());
+                    preview.clear();
+                }
+                drawStatus = NOT_DRAWING;
+                direction = NO_DIRECTION;
+            }
+        } else if (actTool == STRAW) {
+            int x = e.getX(), y = e.getY();
+            x += Main.mainWindow.getLocation().x;
+            y += Main.mainWindow.getLocation().y;
+            x += Main.mainWindow.getStretcher().getLocation().x;
+            y += Main.mainWindow.getStretcher().getLocation().y;
+            x += getLocation().x;
+            y += getLocation().y;
+            // todo: why?
+            x += 8;
+            y += 31;
+            // ** ---------------- **
+            try {
+                Robot robot = new Robot();
+                Color color = robot.getPixelColor(x, y);
+                Main.mainWindow.setLastColor(getCurrentColor());
+                setColor(color);
+                Main.mainWindow.setCurColor(getCurrentColor());
+            } catch (AWTException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        x1 = e.getX();
+        y1 = e.getY();
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        if (preview.size() != 0 && actTool != ARC) {
+            shapes.push(preview.pop());
+            preview.clear();
+        } else if (actTool == TEXT) {
+            // todo: there needs a text dialog.
 
+
+            // -------- *** ---------
+        } else if (actTool == BUCKET) {
+            // todo: there needs a bucket tool.
+
+
+            // -------- *** ---------
+        }
+        if (dragged) {
+            grouped++;
+            dragged = false;
+        }
+        repaint();
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
+        isInCanvas = true;
 
+        Cursor cursor = new Cursor(Cursor.CROSSHAIR_CURSOR);
+        setCursor(cursor);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        isInCanvas = false;
+        Main.mainWindow.setMousePositionLabel(0, 0);
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        Main.mainWindow.setMousePositionLabel(e.getX(), e.getY());
+        Color c1 = currentColor, c2 = lastColor;
+        if (SwingUtilities.isRightMouseButton(e)) {
+            c1 = c2;
+            c2 = currentColor;
+        }
+        x2 = e.getX();
+        y2 = e.getY();
+        this.dragged = true;
 
+        if (actTool == ERASER) {
+            shapes.push(new Shape(x1, y1, x2, y2, Color.WHITE, stroke, LINE, grouped));
+            Main.mainWindow.getCanvas().repaint();
+            x1 = x2;
+            y1 = y2;
+        } else if (actTool == PENCIL) {
+            shapes.push(new Shape(x1, y1, x2, y2, c1, stroke, LINE, grouped));
+            Main.mainWindow.getCanvas().repaint();
+            x1 = x2;
+            y1 = y2;
+        } else if (actTool == LINE) {
+            preview.push(new Shape(x1, y2, x2, y2, c1, stroke, LINE, c2, isTransparent));
+            Main.mainWindow.getCanvas().repaint();
+        } else if (actTool == RECTANGLE) {
+            pushPreview(c1, c2, RECTANGLE);
+        } else if (actTool == ELLIPTICAL) {
+            pushPreview(c1, c2, ELLIPTICAL);
+        } else if (actTool == PENTAGON) {
+            pushPreview(c1, c2, PENTAGON);
+        } else if (actTool == HEXAGON) {
+            pushPreview(c1, c2, HEXAGON);
+        } else if (actTool == TRIANGLE) {
+            pushPreview(c1, c2, TRIANGLE);
+        }
+    }
+
+    private void pushPreview(Color c1, Color c2, BasicTools rectangle) {
+        if (x1 < x2 && y1 < y2) {
+            preview.push(new Shape(x1, y1, x2 - x1, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
+        } else if (x2 < x1 && y1 < y2) {
+            preview.push(new Shape(x2, y1, x1 - x2, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
+        } else if (x1 < x2 && y2 < y1) {
+            preview.push(new Shape(x1, y2, x2 - x1, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
+        } else if (x2 < x1 && y2 < y1) {
+            preview.push(new Shape(x2, y2, x1 - x2, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
+        }
+        Main.mainWindow.getCanvas().repaint();
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+        Main.mainWindow.setMousePositionLabel(e.getX(), e.getY());
+        if (actTool == ARC) {
+            Color c1 = currentColor, c2 = lastColor;
+            x2 = e.getX();
+            y2 = e.getY();
+            if (drawStatus == NOT_DRAWING) {
+                return;
+            } else if (drawStatus == DEFINED_CENTER) {
+                preview.push(new Shape(x1, y1, x2, y2, c1, stroke, LINE, c1, isTransparent));
+                Main.mainWindow.getCanvas().repaint();
+            } else if (drawStatus == DEFINED_R) {
+                //System.out.println(direction);
+                if (direction == NO_DIRECTION) {
+                    Vec3 temp = new Vec3(x2 - center.width, -y2 + center.height, 0);
+                    direction = benchmark.calcDirection(temp);
+                } else if (direction == LEFT) {
+                    //System.out.println(benchmark.print());
+                    int startAngle = benchmark.normalization().calcAngle(new Vec3(1, 0, 0));
+                    Vec3 temp = new Vec3(x2 - center.width, -y2 + center.height, 0);
+                    int drawAngle = temp.normalization().calcAngle(benchmark.normalization());
+                    //System.out.println(startAngle + " " + drawAngle);
+                    //System.out.println(temp.calcDirection(benchmark));
+                    preview.push(new Shape(rectangle, c1, stroke, ARC, c1, isTransparent, startAngle, drawAngle));
+                } else if (direction == RIGHT) {
+                    int startAngle = benchmark.normalization().calcAngle(new Vec3(1, 0, 0));
+                    Vec3 temp = new Vec3(x2 - center.width, -y2 + center.height, 0);
+                    int drawAngle = -(360 - temp.normalization().calcAngle(benchmark.normalization()));
+                    preview.push(new Shape(rectangle, c1, stroke, ARC, c1, isTransparent, startAngle, drawAngle));
+                }
+            }
+            Main.mainWindow.getCanvas().repaint();
+        }
     }
 }
