@@ -15,7 +15,15 @@ public class MenuItemActionListener implements ActionListener {
     private void openImage(File f) {
         // todo: openImage method needs a method to get draw panel listener.
         try {
-            Main.mainWindow.getCanvas().setImage(ImageIO.read(f));
+            var img = ImageIO.read(f);
+            Main.mainWindow.getCanvas().setImage(img);
+            Main.mainWindow.getCanvas().setSize(img.getWidth(), img.getHeight());
+            Main.mainWindow.getCanvas().repaint();
+            Main.mainWindow.setCanvasSizeLabel(img.getWidth(), img.getHeight());
+            Dimension d = new Dimension(img.getWidth(), img.getHeight());
+            Main.mainWindow.getCanvas().setMinimumSize(d);
+            Main.mainWindow.getCanvas().setMaximumSize(d);
+            Main.mainWindow.setSize(img.getWidth() + 200, img.getHeight() + 200);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

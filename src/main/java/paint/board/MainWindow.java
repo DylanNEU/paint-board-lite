@@ -106,7 +106,6 @@ public class MainWindow extends JFrame implements ActionListener {
         newCanvasSettings.setSize(350, 200);
         newCanvasSettings.setResizable(false);
         newCanvasSettings.setLayout(null);
-        newCanvasSettings.pack();
 
         newCanvasSettings.setLocation(500, 400);
         newCanvasSettings.setVisible(true);
@@ -130,15 +129,20 @@ public class MainWindow extends JFrame implements ActionListener {
         JButton okay = new JButton("新建");
         okay.setSize(75, 25);
         okay.setLocation(250, 25);
-        okay.addActionListener(new ActionListener() {
-                                   public void actionPerformed(ActionEvent e) {
-                                       try {
-                                           int newDrawPanelWidth = Integer.parseInt(width.getText());
-                                           int newDrawPanelHeight = Integer.parseInt(height.getText());
-                                           newCanvasSettings.dispose();
 
-                                           ((CanvasPanelListener) canvas).changeCanvasPanelSize(newDrawPanelWidth, newDrawPanelHeight);
-                                       } catch (NumberFormatException nfe) {
+        final int[] w = new int[1];
+        final int[] h = new int[1];
+        okay.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int newCanvasWidth = Integer.parseInt(width.getText());
+                    int newCanvasHeight = Integer.parseInt(height.getText());
+                    newCanvasSettings.dispose();
+                    w[0] = newCanvasWidth;
+                    h[0] = newCanvasHeight;
+
+                    ((CanvasPanelListener) canvas).changeCanvasPanelSize(newCanvasWidth, newCanvasHeight);
+                } catch (NumberFormatException nfe) {
                                            JOptionPane.showMessageDialog(null,
                                                    "输入错误，请输入整数",
                                                    "ERROR",
@@ -175,6 +179,20 @@ public class MainWindow extends JFrame implements ActionListener {
         newCanvasSettings.add(height);
         newCanvasSettings.add(okay);
         newCanvasSettings.add(cancel);
+
+        Dimension d = new Dimension(w[0], h[0]);
+        getCanvas().setSize(d);
+        getCanvas().setMinimumSize(d);
+        getCanvas().setMaximumSize(d);
+        getCanvas().repaint();
+        this.canvas.setSize(d);
+        this.canvas.setBackground(Color.WHITE);
+        this.setCanvasSizeLabel(w[0], h[0]);
+        // todo: when the canvas gets bigger, the background cannot gets bigger at the same time.
+        // confusing...
+
+
+        // ---------- *** ----------
     }
 
     private void createUIComponents() {
@@ -197,6 +215,15 @@ public class MainWindow extends JFrame implements ActionListener {
 
     public void setCurColor(Color color) {
         // todo: there is  a btn to show the current color.
+    }
+
+    private void displayColorChooser() {
+        Color c = JColorChooser.showDialog(this, "选择颜色", new Color(0x68A4FF));
+        if (!(c == null)) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            Main.mainWindow.getCanvas().setColor(c);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        }
     }
 
     public void setMousePositionLabel(int i, int j) {
