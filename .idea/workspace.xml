@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/ArcStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/Vec3.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: add a lot. complete the CanvasPanelListener, vec3, arc status and more.&#10;(just forget commiting for too long QAQ)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/NewFileDialogFocusTraversalPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/NewFileDialogFocusTraversalPolicy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +45,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "306",
     "WebServerToolWindowFactoryState": "false",
     "extract.method.default.visibility": "private"
   }
@@ -61,6 +61,15 @@
       <recent name="paint.board" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="PaintBoardLite" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="paint.board.Main" />
+      <module name="PaintBoardLite" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -75,7 +84,8 @@
       <workItem from="1667806388955" duration="11723000" />
       <workItem from="1667878379256" duration="12572000" />
       <workItem from="1667922901013" duration="50000" />
-      <workItem from="1668045008297" duration="10160000" />
+      <workItem from="1668045008297" duration="10275000" />
+      <workItem from="1668135950275" duration="4622000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -133,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667913467360</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Dylan commit: add a lot. complete the CanvasPanelListener, vec3, arc status and more.&#10;(just forget commiting for too long QAQ)">
+      <created>1668096085409</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668096085409</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +178,8 @@
     <MESSAGE value="Dylan commit: 新增主窗口（未完成，正在设计中）" />
     <MESSAGE value="Dylan commit: 主窗口施工中，新增菜单，新增MenuItemActionListener方法" />
     <MESSAGE value="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java" />
+    <MESSAGE value="Dylan commit: add a lot. complete the CanvasPanelListener, vec3, arc status and more.&#10;(just forget commiting for too long QAQ)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: add a lot. complete the CanvasPanelListener, vec3, arc status and more.&#10;(just forget commiting for too long QAQ)" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -2,6 +2,7 @@ package paint.board;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,13 +43,30 @@ public class MenuItemActionListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = ((JMenuItem) e.getSource()).getName();
-        if (name.equals("newFile")) {
-            Main.mainWindow.createNewCanvas();
-        } else if (name.equals("openFile")) {
-            JFileChooser fileChooser = new JFileChooser(new File("."));
-            // unfinished.
-            // 今晚太困了，写到这吧。
-            // 明天继续。
+        switch (name) {
+            case "newFile" -> Main.mainWindow.createNewCanvas();
+            case "openFile" -> {
+                JFileChooser fileChooser = new JFileChooser(new File("."));
+                fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
+                if (fileChooser.showOpenDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
+                    File f = fileChooser.getSelectedFile();
+                    openImage(f);
+                }
+            }
+            case "saveFile" -> {
+                JFileChooser fileChooser = new JFileChooser(new File("."));
+                fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
+                if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
+                    File file = new File(fileChooser.getSelectedFile() + ".png");
+                    saveImage(file);
+                }
+            }
+            case "redo" -> Main.mainWindow.getCanvas().redo();
+            case "undo" -> Main.mainWindow.getCanvas().undo();
+            default -> {
+                return;
+            }
         }
+        System.out.println(e);
     }
 }

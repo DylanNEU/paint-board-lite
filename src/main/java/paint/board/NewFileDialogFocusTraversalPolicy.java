@@ -7,7 +7,7 @@ public class NewFileDialogFocusTraversalPolicy extends FocusTraversalPolicy {
     Vector<Component> order;
 
     public NewFileDialogFocusTraversalPolicy(Vector<Component> order) {
-        this.order = new Vector<Component>(order.size());
+        this.order = new Vector<>(order.size());
         this.order.addAll(order);
     }
 

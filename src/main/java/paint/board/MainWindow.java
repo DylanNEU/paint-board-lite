@@ -13,6 +13,8 @@ import java.util.Vector;
 public class MainWindow extends JFrame implements ActionListener {
 
     private JPanel mainPanel;
+
+    private JMenuBar mainMenuBar;
     private JPanel tools;
     private JPanel stretcher;
     private JPanel canvas;
@@ -27,14 +29,16 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton redo;
     private JButton button5;
     private JButton button6;
+    private JLabel CursorPositionLabel;
+    private JLabel canvasSizeLabel;
 
     private JMenu file;
     private JMenu view;
     private JMenuItem openFile, newFile, saveFile;
     private JMenuItem full, half;
-    private JMenuItem quash, recover;
+    private JMenuItem undoItem, redoItem;
     private JMenu edit;
-    private final MenuItemActionListener menuItemActionListener = new MenuItemActionListener();
+    private MenuItemActionListener menuItemActionListener;
 
     public MainWindow() {
         super("轻画板");
@@ -42,13 +46,22 @@ public class MainWindow extends JFrame implements ActionListener {
         setLocation(500, 400);
         add(mainPanel);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menuItemActionListener = new MenuItemActionListener();
         // 画板初始化
         initBoard();
         Dimension temp = canvas.getSize();
-//        setCanvasSizeLabel(temp.width, temp.height);
-//        setMousePosLabel(0, 0);
+        setCanvasSizeLabel(temp.width, temp.height);
+        setMousePosLabel(0, 0);
         pencil.requestFocus();
         setVisible(true);
+    }
+
+    public void setMousePosLabel(int x, int y) {
+        this.CursorPositionLabel.setText(x + ", " + y);
+    }
+
+    public void setCanvasSizeLabel(int width, int height) {
+        this.canvasSizeLabel.setText(width + "*" + height);
     }
 
     @Override
@@ -59,12 +72,12 @@ public class MainWindow extends JFrame implements ActionListener {
 
     private void initBoard() {
         Font mainFont = new Font("Microsoft YaHei", Font.PLAIN, 12);
-        for (JMenu jMenu : Arrays.asList(this.view, this.edit, this.file)) {
-            jMenu.setFont(mainFont);
-        }
         file = new JMenu("文件");
         view = new JMenu("视图");
         edit = new JMenu("编辑");
+        for (JMenu jMenu : Arrays.asList(this.view, this.edit, this.file)) {
+            jMenu.setFont(mainFont);
+        }
         newFile = new JMenuItem("新建");
         openFile = new JMenuItem("打开");
         saveFile = new JMenuItem("保存");
@@ -78,7 +91,12 @@ public class MainWindow extends JFrame implements ActionListener {
         newFile.setName("newFile");
         openFile.setName("openFile");
         saveFile.setName("saveFile");
+        file.add(newFile);
+        file.add(openFile);
+        file.add(saveFile);
 
+
+        mainMenuBar.add(file);
 
     }
 
@@ -161,6 +179,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
+        canvas = new CanvasPanelListener();
     }
 
     public CanvasPanelListener getCanvas() {

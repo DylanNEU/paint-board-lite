@@ -36,6 +36,31 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     private Vec3 benchmark;
     private Rectangle rectangle;
 
+    public CanvasPanelListener() {
+        setSize(500, 500);
+        Dimension d = new Dimension(500, 500);
+        setMinimumSize(d);
+        setMaximumSize(d);
+        setBorder(BorderFactory.createLineBorder(Color.lightGray));
+        setBackground(Color.white);
+
+        addMouseListener(this);
+        addMouseMotionListener(this);
+        requestFocus();
+        actTool = BasicTools.PENCIL;
+        //System.out.println("create");
+        currentColor = Color.BLACK;
+        lastColor = Color.WHITE;
+//        todo: text dialog
+//        textDialog = new TextDialog(StartUp.mainWindow);
+
+        this.shapes = new Stack<>();
+        this.removed = new Stack<>();
+        this.grouped = 1;
+        this.preview = new Stack<>();
+        this.isTransparent = true;
+    }
+
     public CanvasPanelListener(int x, int y) {
         setSize(x, y);
         Dimension d = new Dimension(x, y);
@@ -69,8 +94,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         setMaximumSize(d);
         setMinimumSize(d);
         repaint();
-        // todo: method-set canvas size label in main window.
-        // Main.mainWindow.setCanvasSizeLabel(w, h);
+        Main.mainWindow.setCanvasSizeLabel(w, h);
     }
 
     public void paintComponent(Graphics g) {
