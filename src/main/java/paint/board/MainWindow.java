@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
+import static paint.board.BasicTools.*;
+
 public class MainWindow extends JFrame implements ActionListener {
 
     private JPanel mainPanel;
@@ -20,8 +22,8 @@ public class MainWindow extends JFrame implements ActionListener {
     private JPanel canvas;
     private JButton pencil;
     private JButton eraser;
-    private JButton button1;
-    private JButton button2;
+    private JButton line;
+    private JButton drag;
     private JPanel BasicTools;
     private JButton button3;
     private JButton button4;
@@ -31,6 +33,26 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton button6;
     private JLabel CursorPositionLabel;
     private JLabel canvasSizeLabel;
+    private JButton curColor;
+    private JButton lastColor;
+    private JButton black;
+    private JButton lightPurple;
+    private JButton lightGreen;
+    private JButton brightGrey;
+    private JButton button13;
+    private JButton lightBlue;
+    private JButton white;
+    private JButton green;
+    private JButton blue;
+    private JButton darkGrey;
+    private JButton red;
+    private JButton lightOrange;
+    private JButton yellow;
+    private JButton magenta;
+    private JButton cyan;
+    private JButton lightGreenBlue;
+    private JPanel grey;
+    private JButton moreColor;
 
     private JMenu file;
     private JMenu view;
@@ -67,7 +89,18 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO: complete action-performed method
-
+        if (e.getSource() == moreColor) {
+            displayColorChooser();
+        } else if (e.getSource() == pencil) {
+            ((CanvasPanelListener) canvas).setTool(PENCIL);
+        } else if (e.getSource() == eraser) {
+            ((CanvasPanelListener) canvas).setTool(ERASER);
+        } else if (e.getSource() == line) {
+            ((CanvasPanelListener) canvas).setTool(LINE);
+        } else if (e.getSource() == drag) {
+            ((CanvasPanelListener) canvas).setTool(DRAG);
+        }
+        ((CanvasPanelListener) canvas).getShapes();
     }
 
     private void initBoard() {
@@ -97,6 +130,13 @@ public class MainWindow extends JFrame implements ActionListener {
 
 
         mainMenuBar.add(file);
+
+
+        pencil.addActionListener(this);
+        eraser.addActionListener(this);
+        line.addActionListener(this);
+        moreColor.addActionListener(this);
+        drag.addActionListener(this);
 
     }
 
@@ -196,7 +236,6 @@ public class MainWindow extends JFrame implements ActionListener {
     }
 
     private void createUIComponents() {
-        // TODO: place custom component creation code here
         canvas = new CanvasPanelListener();
     }
 
@@ -209,12 +248,11 @@ public class MainWindow extends JFrame implements ActionListener {
     }
 
     public void setLastColor(Color color) {
-        // todo: there is a btn to show the last color.
-        // lastColor.setBackground(color);
+        lastColor.setBackground(color);
     }
 
     public void setCurColor(Color color) {
-        // todo: there is  a btn to show the current color.
+        curColor.setBackground(color);
     }
 
     private void displayColorChooser() {
@@ -229,9 +267,9 @@ public class MainWindow extends JFrame implements ActionListener {
     public void setMousePositionLabel(int i, int j) {
         if (CanvasPanelListener.isInCanvas) {
             // todo: there needs a label to display the position of cursor.
-            // mosePositionLabel.setText(i + ", " + y + "px");
+            CursorPositionLabel.setText("x: " + i + ", y: " + j);
         } else {
-            // mosePositionLabel.setText("");
+            CursorPositionLabel.setText("");
         }
     }
 }

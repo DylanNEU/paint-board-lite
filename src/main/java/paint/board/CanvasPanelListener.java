@@ -14,6 +14,11 @@ import static paint.board.BasicTools.*;
 public class CanvasPanelListener extends JPanel implements MouseListener, MouseMotionListener {
 
     public static boolean isInCanvas = false;
+
+    /**
+     * x1, y1为鼠标按下时的位置
+     * x2, y2为鼠标移动过程中的实时位置
+     */
     private int x1, x2, y1, y2;
     private boolean dragged = false;
     private Color currentColor;
@@ -35,6 +40,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     private int radius;
     private Vec3 benchmark;
     private Rectangle rectangle;
+
+    /**
+     * 当前被选择的形状
+     */
+    private Shape selectedShape;
 
     public CanvasPanelListener() {
         setSize(500, 500);
@@ -346,6 +356,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     public void mousePressed(MouseEvent e) {
         x1 = e.getX();
         y1 = e.getY();
+        for (var shape : shapes) {
+            if (shape.onPressed(x1, y1) == 1) {
+                selectedShape = shape;
+            }
+        }
     }
 
     @Override
@@ -363,6 +378,12 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
 
 
             // -------- *** ---------
+        } else if (actTool == DRAG) {
+            int cx = x2 - x1;
+            int cy = y2 - y1;
+            if (selectedShape != null) {
+                selectedShape.moving(cx, cy);
+            }
         }
         if (dragged) {
             grouped++;
@@ -408,7 +429,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             x1 = x2;
             y1 = y2;
         } else if (actTool == LINE) {
-            preview.push(new Shape(x1, y2, x2, y2, c1, stroke, LINE, c2, isTransparent));
+            preview.push(new Shape(x1, y1, x2, y2, c1, stroke, LINE, c2, isTransparent));
             Main.mainWindow.getCanvas().repaint();
         } else if (actTool == RECTANGLE) {
             pushPreview(c1, c2, RECTANGLE);
@@ -470,5 +491,9 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             }
             Main.mainWindow.getCanvas().repaint();
         }
+    }
+
+    public void getShapes() {
+        System.out.println(shapes);
     }
 }

@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 终于大致完成了画板监听器部分，目前窗口已经可以打开了，铅笔工具可用。">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 添加了文件菜单">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/BasicTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/BasicTools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +48,8 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;306&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Java/JavaProjects/drawingboard&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -85,7 +88,11 @@
       <workItem from="1667922901013" duration="50000" />
       <workItem from="1668045008297" duration="10275000" />
       <workItem from="1668135950275" duration="4942000" />
-      <workItem from="1668169720525" duration="5100000" />
+      <workItem from="1668169720525" duration="9361000" />
+      <workItem from="1668227511306" duration="5799000" />
+      <workItem from="1668328828536" duration="3866000" />
+      <workItem from="1668350990041" duration="304000" />
+      <workItem from="1668351377732" duration="1743000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -157,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668153015526</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Dylan commit: 添加了文件菜单">
+      <created>1668177226040</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1668177226040</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +201,8 @@
     <MESSAGE value="Dylan commit: add CanvasPanelListener.java, NewFileDialogFocusTraversalPolicy.java" />
     <MESSAGE value="Dylan commit: add a lot. complete the CanvasPanelListener, vec3, arc status and more.&#10;(just forget commiting for too long QAQ)" />
     <MESSAGE value="Dylan commit: 终于大致完成了画板监听器部分，目前窗口已经可以打开了，铅笔工具可用。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 终于大致完成了画板监听器部分，目前窗口已经可以打开了，铅笔工具可用。" />
+    <MESSAGE value="Dylan commit: 添加了文件菜单" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 添加了文件菜单" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

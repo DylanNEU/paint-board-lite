@@ -1,17 +1,17 @@
 package paint.board;
+
 import java.awt.*;
 
 
 public class Shape {
 
+    public final int bound = 5;
     // 是否透明
     public boolean transparent;
-
     public int group = 0;
-
-    int x1, x2;
-    int y1, y2;
-
+    public int x1, x2;
+    public int y1, y2;
+    public int isChoosed;
     // 线条颜色
     private Color color;
     // 填充颜色
@@ -45,6 +45,7 @@ public class Shape {
         this.shape = shape;
         this.group = 0;
         this.message = message;
+        this.isChoosed = 0;
     }
 
     public Shape(int x1, int y1, int x2, int y2, Color color, BasicStroke stroke, BasicTools shape, int group) {
@@ -56,6 +57,7 @@ public class Shape {
         this.stroke = stroke;
         this.shape = shape;
         this.group = group;
+        this.isChoosed = 0;
     }
 
     public Shape(int x1, int y1, int x2, int y2, Color color, BasicStroke stroke, BasicTools shape, Color fill, boolean isTransparent) {
@@ -78,6 +80,7 @@ public class Shape {
         if (shape == BasicTools.TRIANGLE) {
             setTrianglePosition();
         }
+        this.isChoosed = 0;
     }
 
     public Shape(Rectangle rectangle, Color c1, BasicStroke stroke, BasicTools arc, Color fill, boolean isTransparent, int startAngle, int drawAngle) {
@@ -89,6 +92,37 @@ public class Shape {
         this.transparent = isTransparent;
         this.startAngle = startAngle;
         this.drawAngle = drawAngle;
+        this.isChoosed = 0;
+    }
+
+    public int onPressed(int x, int y) {
+        if (x > x1 + bound && x < x2 - bound && y > y1 + bound && y < y2 - bound) isChoosed = 1;
+        return isChoosed;
+    }
+
+    public void moving(int a, int b) {
+        if (isChoosed == 1) {
+            this.setX1(x1 + a);
+            this.setX2(x2 + a);
+            this.setY1(y1 + b);
+            this.setY2(y2 + b);
+        }
+    }
+
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
+
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    public void setY1(int y1) {
+        this.y1 = y1;
+    }
+
+    public void setY2(int y2) {
+        this.y2 = y2;
     }
 
     /**
