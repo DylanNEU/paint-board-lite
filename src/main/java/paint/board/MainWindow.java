@@ -1,14 +1,14 @@
 package paint.board;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.spi.CalendarNameProvider;
 
 import static paint.board.BasicTools.*;
 
@@ -53,6 +53,8 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton lightGreenBlue;
     private JPanel grey;
     private JButton moreColor;
+    private JTextField textField1;
+    private JList shapes;
 
     private JMenu file;
     private JMenu view;
@@ -62,8 +64,9 @@ public class MainWindow extends JFrame implements ActionListener {
     private JMenu edit;
     private MenuItemActionListener menuItemActionListener;
 
-    public MainWindow() {
+    public MainWindow() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         super("轻画板");
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         setSize(1200, 800);
         setLocation(500, 400);
         add(mainPanel);
@@ -76,6 +79,7 @@ public class MainWindow extends JFrame implements ActionListener {
         setMousePosLabel(0, 0);
         pencil.requestFocus();
         setVisible(true);
+
     }
 
     public void setMousePosLabel(int x, int y) {
@@ -138,6 +142,19 @@ public class MainWindow extends JFrame implements ActionListener {
         moreColor.addActionListener(this);
         drag.addActionListener(this);
 
+
+        shapes.addListSelectionListener(e -> {
+            if (!shapes.getValueIsAdjusting()) {    //设置只有释放鼠标时才触发
+                switch ((String) shapes.getSelectedValue()) {
+                    case "矩形" -> ((CanvasPanelListener) canvas).setTool(RECTANGLE);
+                    case "三角形" -> ((CanvasPanelListener) canvas).setTool(TRIANGLE);
+                    case "六边形" -> ((CanvasPanelListener) canvas).setTool(HEXAGON);
+                    case "五边形" -> ((CanvasPanelListener) canvas).setTool(PENTAGON);
+                    case "圆形" -> ((CanvasPanelListener) canvas).setTool(ELLIPTICAL);
+                    default -> ((CanvasPanelListener) canvas).setTool(NULL);
+                }
+            }
+        });
     }
 
     public void createNewCanvas() {

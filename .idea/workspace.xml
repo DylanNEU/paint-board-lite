@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 添加了一堆东西。实现了基本的目标移动。">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 修复了形状移动而出现的错误，现在可以正常移动形状了。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/BasicTools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/BasicTools.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +46,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
     &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;306&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
@@ -93,7 +98,8 @@
       <workItem from="1668350990041" duration="304000" />
       <workItem from="1668351377732" duration="3103000" />
       <workItem from="1668407061647" duration="3962000" />
-      <workItem from="1668422034144" duration="4068000" />
+      <workItem from="1668422034144" duration="10088000" />
+      <workItem from="1668437071853" duration="789000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -179,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668353217226</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Dylan commit: 修复了形状移动而出现的错误，现在可以正常移动形状了。">
+      <created>1668427155177</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1668427155177</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +224,8 @@
     <MESSAGE value="Dylan commit: 终于大致完成了画板监听器部分，目前窗口已经可以打开了，铅笔工具可用。" />
     <MESSAGE value="Dylan commit: 添加了文件菜单" />
     <MESSAGE value="Dylan commit: 添加了一堆东西。实现了基本的目标移动。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 添加了一堆东西。实现了基本的目标移动。" />
+    <MESSAGE value="Dylan commit: 修复了形状移动而出现的错误，现在可以正常移动形状了。" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 修复了形状移动而出现的错误，现在可以正常移动形状了。" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -1,6 +1,7 @@
 package paint.board;
 
 public enum BasicTools {
+    NULL,
     PENCIL,
     ERASER,
     BUCKET,

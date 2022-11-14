@@ -107,6 +107,8 @@ public class Shape {
         } else {
             isChosen = 0;
         }
+        System.out.println("x = " + x + ", y = " + y);
+        System.out.println("{x1 = " + x1 + ", y1 = " + y1 + "}, {x2= " + x2 + ", y2 = " + y2 + "}");
         return isChosen;
     }
 
@@ -148,19 +150,21 @@ public class Shape {
      * setPentagonPosition: 从最上方顶点开始，按照逆时针方向依次计算五个顶点坐标，并存储到pos数组中
      */
     private void setPentagonPosition() {
+        int w = this.getWidth();
+        int h = this.getHeight();
         this.posX = new int[]{
-                x1 + x2 / 2,  // 最上方的顶点
+                x1 + w / 2,  // 最上方的顶点
                 x1, // 最左顶点
-                x1 + (int) (x2 / 4.3), // 左下底边顶点
-                x1 + (int) (x2 * 3.3 / 4.3), // 右下底边顶点
-                x1 + x2  // 最右顶点
+                x1 + (int) (w / 4.3), // 左下底边顶点
+                x1 + (int) (w * 3.3 / 4.3), // 右下底边顶点
+                x1 + w  // 最右顶点
         };
         this.posY = new int[]{
                 y1, // 最上的顶点
-                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * y2), // 最左边顶点
-                y1 + y2, // 最下底边的两个顶点
-                y1 + y2,
-                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * y2)  // 最右边顶点
+                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * h), // 最左边顶点
+                y1 + h, // 最下底边的两个顶点
+                y1 + h,
+                y1 + (int) (((Math.sqrt(3) - 0.9) / 2) * h)  // 最右边顶点
         };
     }
 
@@ -168,20 +172,22 @@ public class Shape {
      * setHexagonPosition: 从左上方顶点开始，按照逆时针方向依次计算六个顶点坐标，并存储到pos数组中
      */
     private void setHexagonPosition() {
+        int w = this.getWidth();
+        int h = this.getHeight();
         this.posX = new int[]{
-                x1 + x2 / 4,
+                x1 + w / 4,
                 x1,
-                x1 + x2 / 4,
-                x1 + x2 * 3 / 4,
-                x1 + x2,
-                x1 + x2 * 3 / 4
+                x1 + w / 4,
+                x1 + w * 3 / 4,
+                x1 + w,
+                x1 + w * 3 / 4
         };
         this.posY = new int[]{
                 y1,
-                y1 + y2 / 2,
-                y1 + y2,
-                y1 + y2,
-                y1 + y2 / 2,
+                y1 + h / 2,
+                y1 + h,
+                y1 + h,
+                y1 + h / 2,
                 y1
         };
     }
@@ -190,16 +196,38 @@ public class Shape {
      * setTrianglePosition: 从上方顶点开始，按照逆时针方向依次计算三个顶点坐标，并存储到pos数组中
      */
     private void setTrianglePosition() {
+        int w = this.getWidth();
+        int h = this.getHeight();
         this.posX = new int[]{
-                x1 + x2 / 2,
+                x1 + w / 2,
                 x1,
-                x1 + x2
+                x1 + w
         };
         this.posY = new int[]{
                 y1,
-                y1 + y2,
-                y1 + y2
+                y1 + h,
+                y1 + h
         };
+    }
+
+    public int getWidth() {
+        return Math.abs(x1 - x2);
+    }
+
+//    public void draw(Graphics2D g, Color c) {
+//        switch (this.shape) {
+//            case TRIANGLE -> {
+//                g.drawPolygon(this.getPosX(), this.getPosY(), 3);
+//                if (!this.transparent) {
+//                    g.setColor(this.getFillColor());
+//                    g.fillPolygon(this.getPosX(), this.getPosY(), 3);
+//                }
+//            }
+//        }
+//    }
+
+    public int getHeight() {
+        return Math.abs(y1 - y2);
     }
 
     public Color getColor() {
@@ -218,11 +246,21 @@ public class Shape {
         return message;
     }
 
+    private void updatePosition() {
+        switch (this.shape) {
+            case TRIANGLE -> this.setTrianglePosition();
+            case HEXAGON -> this.setHexagonPosition();
+            case PENTAGON -> this.setPentagonPosition();
+        }
+    }
+
     public int[] getPosX() {
+        updatePosition();
         return posX;
     }
 
     public int[] getPosY() {
+        updatePosition();
         return posY;
     }
 

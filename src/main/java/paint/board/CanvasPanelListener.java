@@ -57,7 +57,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         addMouseListener(this);
         addMouseMotionListener(this);
         requestFocus();
-        actTool = BasicTools.PENCIL;
+        actTool = BasicTools.NULL;
         //System.out.println("create");
         currentColor = Color.BLACK;
         lastColor = Color.WHITE;
@@ -127,16 +127,16 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             if (s.getShape() == LINE) {
                 g2.drawLine(s.getX1(), s.getY1(), s.getX2(), s.getY2());
             } else if (s.getShape() == RECTANGLE) {
-                g2.drawRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                g2.drawRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
-                    g2.fillRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                    g2.fillRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
             } else if (s.getShape() == ELLIPTICAL) {
-                g2.drawOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                g2.drawOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
-                    g2.fillOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                    g2.fillOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
             } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
@@ -175,16 +175,16 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             if (s.getShape() == LINE) {
                 g2.drawLine(s.getX1(), s.getY1(), s.getX2(), s.getY2());
             } else if (s.getShape() == RECTANGLE) {
-                g2.drawRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                g2.drawRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
-                    g2.fillRect(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                    g2.fillRect(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
             } else if (s.getShape() == ELLIPTICAL) {
-                g2.drawOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                g2.drawOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
-                    g2.fillOval(s.getX1(), s.getY1(), s.getX2(), s.getY2());
+                    g2.fillOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
             } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
@@ -368,6 +368,8 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
                 selectedShape = shape;
                 System.out.print("<- this is selected shape");
                 break;
+            } else {
+                System.out.print(" ********** ");
             }
             System.out.println();
         }
@@ -393,9 +395,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             int cy = y2 - y1;
             if (selectedShape != null) {
                 selectedShape.moving(cx, cy);
-                System.out.println(selectedShape + "-> finished select");
+//                selectedShape.draw(graphics2D, selectedShape.getColor());
+//                System.out.println(selectedShape + "-> finished select");
                 selectedShape.setIsChosen(0);
                 selectedShape = null;
+
             }
         }
         if (dragged) {
@@ -454,27 +458,12 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             pushPreview(c1, c2, HEXAGON);
         } else if (actTool == TRIANGLE) {
             pushPreview(c1, c2, TRIANGLE);
-        } else if (actTool == DRAG) {
-            // pushPreview(c1, c2, selectedShape.getShape());
-            //  pushPreview(selectedShape.getColor(), selectedShape.getFilledColor(), selectedShape.getShape());
         }
     }
 
     private void pushPreview(Color c1, Color c2, BasicTools rectangle) {
-        if (actTool == DRAG) {
-//            preview.push(new Shape(x1, y1, x2, y2, c1, stroke, rectangle, c2, isTransparent));
-        } else {
-            if (x1 < x2 && y1 < y2) {
-                preview.push(new Shape(x1, y1, x2 - x1, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
-            } else if (x2 < x1 && y1 < y2) {
-                preview.push(new Shape(x2, y1, x1 - x2, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
-            } else if (x1 < x2 && y2 < y1) {
-                preview.push(new Shape(x1, y2, x2 - x1, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
-            } else if (x2 < x1 && y2 < y1) {
-                preview.push(new Shape(x2, y2, x1 - x2, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
-            }
-            Main.mainWindow.getCanvas().repaint();
-        }
+        preview.push(new Shape(x1, y1, x2, y2, c1, stroke, rectangle, c2, isTransparent));
+        Main.mainWindow.getCanvas().repaint();
     }
 
     @Override
