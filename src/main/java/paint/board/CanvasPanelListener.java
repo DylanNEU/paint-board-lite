@@ -349,6 +349,12 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             } catch (AWTException ex) {
                 throw new RuntimeException(ex);
             }
+        } else if (actTool == DRAG) {
+            for (var shape : shapes) {
+                if (shape.onPressed(x1, y1) == 1) {
+                    selectedShape = shape;
+                }
+            }
         }
     }
 
@@ -357,9 +363,13 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         x1 = e.getX();
         y1 = e.getY();
         for (var shape : shapes) {
+            System.out.print(shape);
             if (shape.onPressed(x1, y1) == 1) {
                 selectedShape = shape;
+                System.out.print("<- this is selected shape");
+                break;
             }
+            System.out.println();
         }
     }
 
@@ -383,6 +393,9 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             int cy = y2 - y1;
             if (selectedShape != null) {
                 selectedShape.moving(cx, cy);
+                System.out.println(selectedShape + "-> finished select");
+                selectedShape.setIsChosen(0);
+                selectedShape = null;
             }
         }
         if (dragged) {
@@ -441,20 +454,27 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             pushPreview(c1, c2, HEXAGON);
         } else if (actTool == TRIANGLE) {
             pushPreview(c1, c2, TRIANGLE);
+        } else if (actTool == DRAG) {
+            // pushPreview(c1, c2, selectedShape.getShape());
+            //  pushPreview(selectedShape.getColor(), selectedShape.getFilledColor(), selectedShape.getShape());
         }
     }
 
     private void pushPreview(Color c1, Color c2, BasicTools rectangle) {
-        if (x1 < x2 && y1 < y2) {
-            preview.push(new Shape(x1, y1, x2 - x1, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
-        } else if (x2 < x1 && y1 < y2) {
-            preview.push(new Shape(x2, y1, x1 - x2, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
-        } else if (x1 < x2 && y2 < y1) {
-            preview.push(new Shape(x1, y2, x2 - x1, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
-        } else if (x2 < x1 && y2 < y1) {
-            preview.push(new Shape(x2, y2, x1 - x2, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
+        if (actTool == DRAG) {
+//            preview.push(new Shape(x1, y1, x2, y2, c1, stroke, rectangle, c2, isTransparent));
+        } else {
+            if (x1 < x2 && y1 < y2) {
+                preview.push(new Shape(x1, y1, x2 - x1, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
+            } else if (x2 < x1 && y1 < y2) {
+                preview.push(new Shape(x2, y1, x1 - x2, y2 - y1, c1, stroke, rectangle, c2, isTransparent));
+            } else if (x1 < x2 && y2 < y1) {
+                preview.push(new Shape(x1, y2, x2 - x1, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
+            } else if (x2 < x1 && y2 < y1) {
+                preview.push(new Shape(x2, y2, x1 - x2, y1 - y2, c1, stroke, rectangle, c2, isTransparent));
+            }
+            Main.mainWindow.getCanvas().repaint();
         }
-        Main.mainWindow.getCanvas().repaint();
     }
 
     @Override

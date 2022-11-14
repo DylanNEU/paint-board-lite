@@ -11,7 +11,7 @@ public class Shape {
     public int group = 0;
     public int x1, x2;
     public int y1, y2;
-    public int isChoosed;
+    public int isChosen;
     // 线条颜色
     private Color color;
     // 填充颜色
@@ -45,7 +45,7 @@ public class Shape {
         this.shape = shape;
         this.group = 0;
         this.message = message;
-        this.isChoosed = 0;
+        this.isChosen = 0;
     }
 
     public Shape(int x1, int y1, int x2, int y2, Color color, BasicStroke stroke, BasicTools shape, int group) {
@@ -57,7 +57,7 @@ public class Shape {
         this.stroke = stroke;
         this.shape = shape;
         this.group = group;
-        this.isChoosed = 0;
+        this.isChosen = 0;
     }
 
     public Shape(int x1, int y1, int x2, int y2, Color color, BasicStroke stroke, BasicTools shape, Color fill, boolean isTransparent) {
@@ -80,7 +80,7 @@ public class Shape {
         if (shape == BasicTools.TRIANGLE) {
             setTrianglePosition();
         }
-        this.isChoosed = 0;
+        this.isChosen = 0;
     }
 
     public Shape(Rectangle rectangle, Color c1, BasicStroke stroke, BasicTools arc, Color fill, boolean isTransparent, int startAngle, int drawAngle) {
@@ -92,20 +92,39 @@ public class Shape {
         this.transparent = isTransparent;
         this.startAngle = startAngle;
         this.drawAngle = drawAngle;
-        this.isChoosed = 0;
+        this.isChosen = 0;
     }
 
     public int onPressed(int x, int y) {
-        if (x > x1 + bound && x < x2 - bound && y > y1 + bound && y < y2 - bound) isChoosed = 1;
-        return isChoosed;
+        if (x1 < x2 && y1 < y2) {
+            if (x > x1 - bound && x < x2 + bound && y > y1 - bound && y < y2 + bound) isChosen = 1;
+        } else if (x1 > x2 && y1 > y2) {
+            if (x > x2 - bound && x < x1 + bound && y > y2 - bound && y < y1 + bound) isChosen = 1;
+        } else if (x1 > x2 && y1 < y2) {
+            if (x > x2 - bound && x < x1 + bound && y > y1 - bound && y < y2 + bound) isChosen = 1;
+        } else if (x1 < x2 && y1 > y2) {
+            if (x > x1 - bound && x < x2 + bound && y > y2 - bound && y < y1 + bound) isChosen = 1;
+        } else {
+            isChosen = 0;
+        }
+        return isChosen;
+    }
+
+    public void setIsChosen(int isChosen) {
+        this.isChosen = isChosen;
     }
 
     public void moving(int a, int b) {
-        if (isChoosed == 1) {
+        if (isChosen == 1) {
             this.setX1(x1 + a);
             this.setX2(x2 + a);
             this.setY1(y1 + b);
             this.setY2(y2 + b);
+        } else {
+            this.setX1(x1);
+            this.setX2(x2);
+            this.setY1(y1);
+            this.setY2(y2);
         }
     }
 
