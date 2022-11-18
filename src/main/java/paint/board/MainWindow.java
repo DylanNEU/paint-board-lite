@@ -141,7 +141,7 @@ public class MainWindow extends JFrame implements ActionListener {
         });
 
         save.addActionListener(e -> {
-            JFileChooser fileChooser = new JFileChooser(new File("."));
+            JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
             fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
             if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile() + ".png");
@@ -308,6 +308,7 @@ public class MainWindow extends JFrame implements ActionListener {
         setActionLis(red, green, blue, yellow, magenta, cyan, lightGreenBlue, lightGreen, lightBlue, lightOrange);
         lightPurple.addActionListener(this);
         fill.addActionListener(this);
+        straw.addActionListener(this);
 
         pencil.setIcon(new ImageIcon("assets/pencil.png"));
         eraser.setIcon(new ImageIcon("assets/eraser.png"));

@@ -361,12 +361,13 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             x += getLocation().x;
             y += getLocation().y;
             // todo: why?
-            x += 8;
-            y += 31;
+            x += 153;
+            y += 92;
             // ** ---------------- **
             try {
                 Robot robot = new Robot();
                 Color color = robot.getPixelColor(x, y);
+                System.out.println(color);
                 Main.mainWindow.setLastColor(getCurrentColor());
                 setColor(color);
                 Main.mainWindow.setCurColor(getCurrentColor());
@@ -387,15 +388,10 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         x1 = e.getX();
         y1 = e.getY();
         for (var shape : shapes) {
-            System.out.print(shape);
             if (shape.onPressed(x1, y1) == 1) {
                 selectedShape = shape;
-                System.out.print("<- this is selected shape");
                 break;
-            } else {
-                System.out.print(" ********** ");
             }
-            System.out.println();
         }
     }
 

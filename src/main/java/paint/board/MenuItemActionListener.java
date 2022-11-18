@@ -54,7 +54,7 @@ public class MenuItemActionListener implements ActionListener {
         switch (name) {
             case "newFile" -> Main.mainWindow.createNewCanvas();
             case "openFile" -> {
-                JFileChooser fileChooser = new JFileChooser(new File("."));
+                JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
                 fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
                 if (fileChooser.showOpenDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
                     File f = fileChooser.getSelectedFile();
@@ -62,7 +62,7 @@ public class MenuItemActionListener implements ActionListener {
                 }
             }
             case "saveFile" -> {
-                JFileChooser fileChooser = new JFileChooser(new File("."));
+                JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
                 fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
                 if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
                     File file = new File(fileChooser.getSelectedFile() + ".png");
