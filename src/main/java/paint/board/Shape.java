@@ -95,6 +95,28 @@ public class Shape {
         this.isChosen = 0;
     }
 
+    public Shape(Shape shape) {
+        this.transparent = shape.transparent;
+        this.group = shape.group;
+        this.x1 = shape.x1;
+        this.x2 = shape.x2;
+        this.y1 = shape.y1;
+        this.y2 = shape.y2;
+        this.isChosen = shape.isChosen;
+        this.color = shape.color;
+        this.filledColor = shape.filledColor;
+        this.stroke = shape.stroke;
+        this.message = shape.message;
+        this.posX = shape.posX;
+        this.posY = shape.posY;
+        this.rectangle = shape.rectangle;
+        this.startAngle = shape.startAngle;
+        this.drawAngle = shape.drawAngle;
+        this.shape = shape.shape;
+        this.font = shape.font;
+    }
+
+
     public int onPressed(int x, int y) {
         if (x1 < x2 && y1 < y2) {
             if (x > x1 - bound && x < x2 + bound && y > y1 - bound && y < y2 + bound) isChosen = 1;
@@ -210,6 +232,71 @@ public class Shape {
         };
     }
 
+    /**
+     * setCompassPositoin: 从上方顶点开始，按照逆时针方向依次计算八个顶点坐标，并存储到pos数组中。
+     *
+     * @apiNote 四角星（指南针形）
+     */
+    private void setCompassPosition() {
+        int w = this.getWidth();
+        int h = this.getHeight();
+        this.posX = new int[]{
+                x1 + w / 2,
+                x1 + 2 * w / 5,
+                x1,
+                x1 + 2 * w / 5,
+                x1 + w / 2,
+                x1 + 3 * w / 5,
+                x1 + w,
+                x1 + 3 * w / 5
+        };
+        this.posY = new int[]{
+                y1,
+                y1 + 2 * h / 5,
+                y1 + h / 2,
+                y1 + 3 * h / 5,
+                y1 + h,
+                y1 + 3 * h / 5,
+                y1 + h / 2,
+                y1 + 2 * h / 5,
+        };
+    }
+
+    /**
+     * setPentagramPosition(): 从上方顶点开始，按照逆时针方向依次计算十个顶点坐标，并存储到pos数组中
+     *
+     * @apiNote 五角星
+     */
+    private void setPentagramPosition() {
+        int w = this.getWidth();
+        int h = this.getHeight();
+        this.posX = new int[]{
+                x1 + w / 2,
+                x1 + 5 * w / 12,
+                x1,
+                x1 + 17 * w / 48,
+                x1 + w / 4,
+                x1 + w / 2,
+                x1 + 3 * w / 4,
+                x1 + 31 * w / 48,
+                x1 + w,
+                x1 + 7 * w / 12
+        };
+        this.posY = new int[]{
+                y1,
+                y1 + h / 3,
+                y1 + h / 3,
+                y1 + 2 * h / 3,
+                y1 + h,
+                y1 + 7 * h / 9,
+                y1 + h,
+                y1 + 2 * h / 3,
+                y1 + h / 3,
+                y1 + h / 3,
+        };
+    }
+
+
     public int getWidth() {
         return Math.abs(x1 - x2);
     }
@@ -251,6 +338,8 @@ public class Shape {
             case TRIANGLE -> this.setTrianglePosition();
             case HEXAGON -> this.setHexagonPosition();
             case PENTAGON -> this.setPentagonPosition();
+            case PENTAGRAM -> this.setPentagramPosition();
+            case COMPASS -> this.setCompassPosition();
         }
     }
 

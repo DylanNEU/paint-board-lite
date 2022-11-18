@@ -1,14 +1,15 @@
 package paint.board;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.nio.CharBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Vector;
-import java.util.spi.CalendarNameProvider;
 
 import static paint.board.BasicTools.*;
 
@@ -27,8 +28,23 @@ public class MainWindow extends JFrame implements ActionListener {
     private JPanel BasicTools;
     private JButton button3;
     private JButton button4;
-    private JButton undo;
-    private JButton redo;
+    private final String[] defaultList = new String[]{
+            "---简单形状---",
+            "直线",
+            "铅笔",
+            "任意曲线",
+            "三角形",
+            "矩形",
+            "---多边形---",
+            "五边形",
+            "六边形",
+            "---圆形---",
+            "圆形",
+            "---特殊形状---",
+            "四角星",
+            "五角星"
+    };
+    private JButton save;
     private JButton button5;
     private JButton button6;
     private JLabel CursorPositionLabel;
@@ -39,7 +55,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton lightPurple;
     private JButton lightGreen;
     private JButton brightGrey;
-    private JButton button13;
+    private JButton create;
     private JButton lightBlue;
     private JButton white;
     private JButton green;
@@ -51,10 +67,14 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton magenta;
     private JButton cyan;
     private JButton lightGreenBlue;
-    private JPanel grey;
+    private JButton grey;
     private JButton moreColor;
-    private JTextField textField1;
-    private JList shapes;
+    private JPanel color;
+    private JTextField search;
+    private JPanel shapesPanel;
+    private JButton searchBtn;
+    private JButton clearBtn;
+    private JPanel searchField;
 
     private JMenu file;
     private JMenu view;
@@ -63,6 +83,9 @@ public class MainWindow extends JFrame implements ActionListener {
     private JMenuItem undoItem, redoItem;
     private JMenu edit;
     private MenuItemActionListener menuItemActionListener;
+    private JList<String> shapeList;
+    private JMenuItem redoM;
+    private JMenuItem undoM;
 
     public MainWindow() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         super("轻画板");
@@ -79,7 +102,70 @@ public class MainWindow extends JFrame implements ActionListener {
         setMousePosLabel(0, 0);
         pencil.requestFocus();
         setVisible(true);
+        shapeList.setAutoscrolls(true);
 
+        search.setToolTipText("支持模糊匹配");
+        search.setText("搜索形状...");
+        search.setForeground(Color.GRAY);
+
+        searchBtn.addActionListener(e -> {
+            String key = search.getText();
+            String[] res = (key.length() > 0 && !key.equals("搜索形状...")) ? fuzzyMatching(key) : defaultList;
+            shapeList.setListData(res);
+        });
+
+        clearBtn.addActionListener(e -> {
+            shapeList.setListData(defaultList);
+            if (!search.getText().equals("搜索形状...")) {
+                search.setText("搜索形状...");
+                search.setForeground(Color.GRAY);
+            }
+        });
+
+        shapeList.addListSelectionListener(e -> {
+            if (!shapeList.getValueIsAdjusting()) {    //设置只有释放鼠标时才触发
+                switch (shapeList.getSelectedValue()) {
+                    case "直线" -> ((CanvasPanelListener) canvas).setTool(LINE);
+                    case "矩形" -> ((CanvasPanelListener) canvas).setTool(RECTANGLE);
+                    case "三角形" -> ((CanvasPanelListener) canvas).setTool(TRIANGLE);
+                    case "六边形" -> ((CanvasPanelListener) canvas).setTool(HEXAGON);
+                    case "五边形" -> ((CanvasPanelListener) canvas).setTool(PENTAGON);
+                    case "圆形" -> ((CanvasPanelListener) canvas).setTool(ELLIPTICAL);
+                    case "五角星" -> ((CanvasPanelListener) canvas).setTool(PENTAGRAM);
+                    case "四角星" -> ((CanvasPanelListener) canvas).setTool(COMPASS);
+                    case "铅笔" -> ((CanvasPanelListener) canvas).setTool(PENCIL);
+                    default -> ((CanvasPanelListener) canvas).setTool(NULL);
+                }
+            }
+        });
+
+        save.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser(new File("."));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
+            if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
+                File file = new File(fileChooser.getSelectedFile() + ".png");
+                MenuItemActionListener.saveImage(file);
+            }
+        });
+
+        create.addActionListener(e -> createNewCanvas());
+        search.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (search.getText().equals("搜索形状...")) {
+                    search.setText("");
+                    search.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (search.getText().equals("")) {
+                    search.setText("搜索形状...");
+                    search.setForeground(Color.GRAY);
+                }
+            }
+        });
     }
 
     public void setMousePosLabel(int x, int y) {
@@ -131,9 +217,22 @@ public class MainWindow extends JFrame implements ActionListener {
         file.add(newFile);
         file.add(openFile);
         file.add(saveFile);
+        undoM = new JMenuItem("撤销");
+        redoM = new JMenuItem("重做");
+        undoM.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK));
+        redoM.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, InputEvent.CTRL_DOWN_MASK));
+        for (JMenuItem jMenuItem : Arrays.asList(this.redoM, this.undoM)) {
+            jMenuItem.setFont(mainFont);
+            jMenuItem.addActionListener(menuItemActionListener);
+        }
+        undoM.setName("Undo");
+        redoM.setName("Redo");
+        edit.add(undoM);
+        edit.add(redoM);
 
 
         mainMenuBar.add(file);
+        mainMenuBar.add(edit);
 
 
         pencil.addActionListener(this);
@@ -143,18 +242,40 @@ public class MainWindow extends JFrame implements ActionListener {
         drag.addActionListener(this);
 
 
-        shapes.addListSelectionListener(e -> {
-            if (!shapes.getValueIsAdjusting()) {    //设置只有释放鼠标时才触发
-                switch ((String) shapes.getSelectedValue()) {
-                    case "矩形" -> ((CanvasPanelListener) canvas).setTool(RECTANGLE);
-                    case "三角形" -> ((CanvasPanelListener) canvas).setTool(TRIANGLE);
-                    case "六边形" -> ((CanvasPanelListener) canvas).setTool(HEXAGON);
-                    case "五边形" -> ((CanvasPanelListener) canvas).setTool(PENTAGON);
-                    case "圆形" -> ((CanvasPanelListener) canvas).setTool(ELLIPTICAL);
-                    default -> ((CanvasPanelListener) canvas).setTool(NULL);
+        pencil.setIcon(new ImageIcon("assets/pencil.png"));
+        eraser.setIcon(new ImageIcon("assets/eraser.png"));
+        drag.setIcon(new ImageIcon("assets/move.png"));
+
+        shapeList.setListData(defaultList);
+
+    }
+
+    private JPanel generateSearchedShapeMenu(String key) {
+        JPanel res = new JPanel();
+        Dimension d = new Dimension(120, 200);
+        Dimension inf = new Dimension(120, 9999);
+        res.setSize(d);
+        res.setAutoscrolls(true);
+        res.setMinimumSize(d);
+        res.setMaximumSize(inf);
+        String[] s = fuzzyMatching(key);
+        JList<String> searchResult = new JList<>(s.length == 0 ? new String[]{"暂无结果"} : s);
+        res.add(searchResult);
+        return res;
+    }
+
+    private String[] fuzzyMatching(String key) {
+        HashSet<String> res = new HashSet<>();
+        String[] existShapes = new String[]{"五角星", "直线", "三角形", "矩形", "六边形", "圆形", "五边形", "四角星"};
+        for (var c : key.toCharArray()) {
+            for (var s : existShapes) {
+                if (s.contains(CharBuffer.wrap(new char[]{c}))) {
+                    res.add(s);
                 }
             }
-        });
+        }
+        String[] res_ = new String[]{};
+        return res.isEmpty() ? new String[]{"暂无结果"} : res.toArray(res_);
     }
 
     public void createNewCanvas() {
@@ -170,6 +291,7 @@ public class MainWindow extends JFrame implements ActionListener {
         JTextField width = new JTextField();
         width.setSize(100, 25);
         width.setLocation(100, 25);
+        width.setText("800");
 
         JLabel widthLabel = new JLabel("宽度 (px):");
         widthLabel.setSize(75, 25);
@@ -182,6 +304,7 @@ public class MainWindow extends JFrame implements ActionListener {
         JTextField height = new JTextField();
         height.setLocation(100, 75);
         height.setSize(100, 25);
+        height.setText("600");
 
         JButton okay = new JButton("新建");
         okay.setSize(75, 25);
@@ -189,24 +312,22 @@ public class MainWindow extends JFrame implements ActionListener {
 
         final int[] w = new int[1];
         final int[] h = new int[1];
-        okay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int newCanvasWidth = Integer.parseInt(width.getText());
-                    int newCanvasHeight = Integer.parseInt(height.getText());
-                    newCanvasSettings.dispose();
-                    w[0] = newCanvasWidth;
-                    h[0] = newCanvasHeight;
+        okay.addActionListener(e -> {
+                    try {
+                        int newCanvasWidth = Integer.parseInt(width.getText());
+                        int newCanvasHeight = Integer.parseInt(height.getText());
+                        newCanvasSettings.dispose();
+                        w[0] = newCanvasWidth;
+                        h[0] = newCanvasHeight;
 
-                    ((CanvasPanelListener) canvas).changeCanvasPanelSize(newCanvasWidth, newCanvasHeight);
-                } catch (NumberFormatException nfe) {
-                                           JOptionPane.showMessageDialog(null,
-                                                   "输入错误，请输入整数",
-                                                   "ERROR",
-                                                   JOptionPane.ERROR_MESSAGE);
-                                       }
-                                   }
-                               }
+                        ((CanvasPanelListener) canvas).changeCanvasPanelSize(newCanvasWidth, newCanvasHeight);
+                    } catch (NumberFormatException nfe) {
+                        JOptionPane.showMessageDialog(null,
+                                "输入错误，请输入整数",
+                                "ERROR",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+                }
         );
 
         JButton cancel = new JButton("取消");

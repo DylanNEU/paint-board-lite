@@ -30,7 +30,7 @@ public class MenuItemActionListener implements ActionListener {
 
     }
 
-    private BufferedImage createPanel(JPanel panel) {
+    private static BufferedImage createPanel(JPanel panel) {
         int width = panel.getWidth();
         int height = panel.getHeight();
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -39,7 +39,7 @@ public class MenuItemActionListener implements ActionListener {
         return img;
     }
 
-    private void saveImage(File f) {
+    public static void saveImage(File f) {
         BufferedImage img = createPanel(Main.mainWindow.getCanvas());
         try {
             ImageIO.write(img, "png", f);
@@ -69,8 +69,8 @@ public class MenuItemActionListener implements ActionListener {
                     saveImage(file);
                 }
             }
-            case "redo" -> Main.mainWindow.getCanvas().redo();
-            case "undo" -> Main.mainWindow.getCanvas().undo();
+            case "Redo" -> Main.mainWindow.getCanvas().redo();
+            case "Undo" -> Main.mainWindow.getCanvas().undo();
             default -> {
                 return;
             }

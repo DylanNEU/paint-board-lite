@@ -47,8 +47,8 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     private Shape selectedShape;
 
     public CanvasPanelListener() {
-        setSize(500, 500);
-        Dimension d = new Dimension(500, 500);
+        setSize(800, 600);
+        Dimension d = new Dimension(800, 600);
         setMinimumSize(d);
         setMaximumSize(d);
         setBorder(BorderFactory.createLineBorder(Color.lightGray));
@@ -138,11 +138,23 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
                     g2.setColor(s.getFillColor());
                     g2.fillOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
+            } else if (s.getShape() == COMPASS) {
+                g2.drawPolygon(s.getPosX(), s.getPosY(), 8);
+                if (!s.transparent) {
+                    g2.setColor(s.getFillColor());
+                    g2.fillPolygon(s.getPosX(), s.getPosY(), 8);
+                }
             } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 5);
+                }
+            } else if (s.getShape() == PENTAGRAM) {
+                g2.drawPolygon(s.getPosX(), s.getPosY(), 10);
+                if (!s.transparent) {
+                    g2.setColor(s.getFillColor());
+                    g2.fillPolygon(s.getPosX(), s.getPosY(), 10);
                 }
             } else if (s.getShape() == HEXAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 6);
@@ -186,11 +198,23 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
                     g2.setColor(s.getFillColor());
                     g2.fillOval(s.getX1(), s.getY1(), s.getWidth(), s.getHeight());
                 }
+            } else if (s.getShape() == COMPASS) {
+                g2.drawPolygon(s.getPosX(), s.getPosY(), 8);
+                if (!s.transparent) {
+                    g2.setColor(s.getFillColor());
+                    g2.fillPolygon(s.getPosX(), s.getPosY(), 8);
+                }
             } else if (s.getShape() == PENTAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 5);
                 if (!s.transparent) {
                     g2.setColor(s.getFillColor());
                     g2.fillPolygon(s.getPosX(), s.getPosY(), 5);
+                }
+            } else if (s.getShape() == PENTAGRAM) {
+                g2.drawPolygon(s.getPosX(), s.getPosY(), 10);
+                if (!s.transparent) {
+                    g2.setColor(s.getFillColor());
+                    g2.fillPolygon(s.getPosX(), s.getPosY(), 10);
                 }
             } else if (s.getShape() == HEXAGON) {
                 g2.drawPolygon(s.getPosX(), s.getPosY(), 6);
@@ -394,6 +418,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             int cx = x2 - x1;
             int cy = y2 - y1;
             if (selectedShape != null) {
+//                removed.push(new Shape(selectedShape));
                 selectedShape.moving(cx, cy);
 //                selectedShape.draw(graphics2D, selectedShape.getColor());
 //                System.out.println(selectedShape + "-> finished select");
@@ -454,6 +479,10 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             pushPreview(c1, c2, ELLIPTICAL);
         } else if (actTool == PENTAGON) {
             pushPreview(c1, c2, PENTAGON);
+        } else if (actTool == PENTAGRAM) {
+            pushPreview(c1, c2, PENTAGRAM);
+        } else if (actTool == COMPASS) {
+            pushPreview(c1, c2, COMPASS);
         } else if (actTool == HEXAGON) {
             pushPreview(c1, c2, HEXAGON);
         } else if (actTool == TRIANGLE) {

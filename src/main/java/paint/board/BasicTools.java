@@ -15,5 +15,7 @@ public enum BasicTools {
     PENTAGON,
     HEXAGON,
     RECTANGLE,
-    DRAG, ARC
+    DRAG,
+    PENTAGRAM,
+    COMPASS, ARC
 }
