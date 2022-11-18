@@ -26,8 +26,8 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton line;
     private JButton drag;
     private JPanel BasicTools;
-    private JButton button3;
-    private JButton button4;
+    private JButton straw;
+    private JButton text;
     private final String[] defaultList = new String[]{
             "---简单形状---",
             "直线",
@@ -54,7 +54,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton black;
     private JButton lightPurple;
     private JButton lightGreen;
-    private JButton brightGrey;
+    private JButton brightGray;
     private JButton create;
     private JButton lightBlue;
     private JButton white;
@@ -67,7 +67,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JButton magenta;
     private JButton cyan;
     private JButton lightGreenBlue;
-    private JButton grey;
+    private JButton gray;
     private JButton moreColor;
     private JPanel color;
     private JTextField search;
@@ -189,8 +189,74 @@ public class MainWindow extends JFrame implements ActionListener {
             ((CanvasPanelListener) canvas).setTool(LINE);
         } else if (e.getSource() == drag) {
             ((CanvasPanelListener) canvas).setTool(DRAG);
+        } else if (e.getSource() == straw) {
+            ((CanvasPanelListener) canvas).setTool(STRAW);
+        } else if (e.getSource() == black) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.black);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == white) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.white);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == darkGrey) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.darkGray);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == brightGray) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.brightGray);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == gray) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.gray);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == red) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.red);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == green) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.green);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == blue) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.blue);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == yellow) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.yellow);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == magenta) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.magenta);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == cyan) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.cyan);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == lightGreenBlue) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.lightGreenBlue);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == lightPurple) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.lightPurple);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == lightOrange) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.lightOrange);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == lightGreen) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.lightGreen);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == lightBlue) {
+            setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
+            ((CanvasPanelListener) canvas).setColor(Pigment.lightBlue);
+            setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
         }
-        ((CanvasPanelListener) canvas).getShapes();
+//        ((CanvasPanelListener) canvas).getShapes();
     }
 
     private void initBoard() {
@@ -235,12 +301,9 @@ public class MainWindow extends JFrame implements ActionListener {
         mainMenuBar.add(edit);
 
 
-        pencil.addActionListener(this);
-        eraser.addActionListener(this);
-        line.addActionListener(this);
-        moreColor.addActionListener(this);
-        drag.addActionListener(this);
-
+        setActionLis(pencil, eraser, line, moreColor, drag, black, darkGrey, gray, brightGray, white);
+        setActionLis(red, green, blue, yellow, magenta, cyan, lightGreenBlue, lightGreen, lightBlue, lightOrange);
+        lightPurple.addActionListener(this);
 
         pencil.setIcon(new ImageIcon("assets/pencil.png"));
         eraser.setIcon(new ImageIcon("assets/eraser.png"));
@@ -248,6 +311,19 @@ public class MainWindow extends JFrame implements ActionListener {
 
         shapeList.setListData(defaultList);
 
+    }
+
+    private void setActionLis(JButton red, JButton green, JButton blue, JButton yellow, JButton magenta, JButton cyan, JButton lightGreenBlue, JButton lightGreen, JButton lightBlue, JButton lightOrange) {
+        red.addActionListener(this);
+        green.addActionListener(this);
+        blue.addActionListener(this);
+        yellow.addActionListener(this);
+        magenta.addActionListener(this);
+        cyan.addActionListener(this);
+        lightGreenBlue.addActionListener(this);
+        lightGreen.addActionListener(this);
+        lightBlue.addActionListener(this);
+        lightOrange.addActionListener(this);
     }
 
     private JPanel generateSearchedShapeMenu(String key) {
