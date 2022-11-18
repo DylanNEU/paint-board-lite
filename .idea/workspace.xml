@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 完成了搜索功能。现在可以模糊匹配搜索了。">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/Pigment.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 加入快捷颜色按钮的功能。&#10;todo: 带填充的形状部分寄了">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
@@ -102,7 +101,8 @@
       <workItem from="1668507765878" duration="2294000" />
       <workItem from="1668510448196" duration="4495000" />
       <workItem from="1668605142027" duration="8691000" />
-      <workItem from="1668743305600" duration="10540000" />
+      <workItem from="1668743305600" duration="11117000" />
+      <workItem from="1668770986983" duration="1888000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -209,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668747420394</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Dylan commit: 加入快捷颜色按钮的功能。&#10;todo: 带填充的形状部分寄了">
+      <created>1668764473001</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1668764473001</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +251,8 @@
     <MESSAGE value="Dylan commit: 修复了形状移动而出现的错误，现在可以正常移动形状了。" />
     <MESSAGE value="Dylan commit: 修复了多边形无法正常移动的问题，对于多边形需要重新计算位置数组。" />
     <MESSAGE value="Dylan commit: 完成了搜索功能。现在可以模糊匹配搜索了。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 完成了搜索功能。现在可以模糊匹配搜索了。" />
+    <MESSAGE value="Dylan commit: 加入快捷颜色按钮的功能。&#10;todo: 带填充的形状部分寄了" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 加入快捷颜色按钮的功能。&#10;todo: 带填充的形状部分寄了" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

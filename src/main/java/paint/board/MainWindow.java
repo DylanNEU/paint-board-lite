@@ -84,6 +84,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private JMenu edit;
     private MenuItemActionListener menuItemActionListener;
     private JList<String> shapeList;
+    private JRadioButton fill;
     private JMenuItem redoM;
     private JMenuItem undoM;
 
@@ -255,6 +256,8 @@ public class MainWindow extends JFrame implements ActionListener {
             setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
             ((CanvasPanelListener) canvas).setColor(Pigment.lightBlue);
             setCurColor(((CanvasPanelListener) canvas).getCurrentColor());
+        } else if (e.getSource() == fill) {
+            Main.mainWindow.getCanvas().setTransparent(!fill.isSelected());
         }
 //        ((CanvasPanelListener) canvas).getShapes();
     }
@@ -304,6 +307,7 @@ public class MainWindow extends JFrame implements ActionListener {
         setActionLis(pencil, eraser, line, moreColor, drag, black, darkGrey, gray, brightGray, white);
         setActionLis(red, green, blue, yellow, magenta, cyan, lightGreenBlue, lightGreen, lightBlue, lightOrange);
         lightPurple.addActionListener(this);
+        fill.addActionListener(this);
 
         pencil.setIcon(new ImageIcon("assets/pencil.png"));
         eraser.setIcon(new ImageIcon("assets/eraser.png"));
