@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.nio.CharBuffer;
 import java.util.ArrayList;
@@ -32,20 +33,26 @@ public class MainWindow extends JFrame implements ActionListener {
             "---简单形状---",
             "直线",
             "铅笔",
-            "任意曲线",
-            "三角形",
             "矩形",
+            "三角形",
+            "圆形",
+            " ",
             "---多边形---",
+            "三角形",
             "五边形",
             "六边形",
+            " ",
             "---圆形---",
             "圆形",
+            " ",
             "---特殊形状---",
             "四角星",
-            "五角星"
+            "五角星",
+            "五边形",
+            "六边形"
     };
     private JButton save;
-    private JButton button5;
+    private JButton fullScreen;
     private JButton button6;
     private JLabel CursorPositionLabel;
     private JLabel canvasSizeLabel;
@@ -167,6 +174,61 @@ public class MainWindow extends JFrame implements ActionListener {
                 }
             }
         });
+        fullScreen.addActionListener(e -> {
+            JFrame frame = new JFrame();
+            frame.setLayout(new GridBagLayout());
+            JFrame note = new JFrame();
+            note.setLayout(new GridBagLayout());
+            Toolkit kit = Toolkit.getDefaultToolkit(); //定义工具包
+            Dimension screenSize = kit.getScreenSize(); //获取屏幕的尺寸
+            note.setLocation(screenSize.width / 2 - 100, 0);
+            note.setAlwaysOnTop(true);
+            JLabel l = new JLabel("鼠标点击任意位置退出全屏显示");
+            l.setForeground(Color.WHITE);
+            note.add(l);
+            note.getContentPane().setBackground(Color.DARK_GRAY);
+            note.setSize(new Dimension(200, 50));
+            note.setResizable(false);
+            note.setUndecorated(true);
+            note.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            note.setVisible(true);
+            BufferedImage img = MenuItemActionListener.createPanel(canvas);
+            frame.add(new JLabel(new ImageIcon(img)));
+            frame.getContentPane().setBackground(Color.BLACK);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//            GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
+            frame.setMaximumSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize());
+            frame.setMinimumSize(GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize());
+            frame.setResizable(false);    //不能改变大小
+            frame.setUndecorated(true);    //不要边框
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.addMouseListener(new MouseListener() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    frame.setVisible(false);
+                    frame.dispose();
+                    note.setVisible(false);
+                    note.dispose();
+                }
+
+                @Override
+                public void mousePressed(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                }
+
+                @Override
+                public void mouseExited(MouseEvent e) {
+                }
+            });
+            frame.setVisible(true);
+        });
     }
 
     public void setMousePosLabel(int x, int y) {
@@ -192,6 +254,8 @@ public class MainWindow extends JFrame implements ActionListener {
             ((CanvasPanelListener) canvas).setTool(DRAG);
         } else if (e.getSource() == straw) {
             ((CanvasPanelListener) canvas).setTool(STRAW);
+        } else if (e.getSource() == text) {
+            ((CanvasPanelListener) canvas).setTool(TEXT);
         } else if (e.getSource() == black) {
             setLastColor(((CanvasPanelListener) canvas).getCurrentColor());
             ((CanvasPanelListener) canvas).setColor(Pigment.black);
@@ -309,6 +373,7 @@ public class MainWindow extends JFrame implements ActionListener {
         lightPurple.addActionListener(this);
         fill.addActionListener(this);
         straw.addActionListener(this);
+        text.addActionListener(this);
 
         pencil.setIcon(new ImageIcon("assets/pencil.png"));
         eraser.setIcon(new ImageIcon("assets/eraser.png"));
@@ -402,6 +467,9 @@ public class MainWindow extends JFrame implements ActionListener {
                         h[0] = newCanvasHeight;
 
                         ((CanvasPanelListener) canvas).changeCanvasPanelSize(newCanvasWidth, newCanvasHeight);
+                        Dimension d = new Dimension(w[0], h[0]);
+                        getCanvas().setBICanvas(d);
+
                     } catch (NumberFormatException nfe) {
                         JOptionPane.showMessageDialog(null,
                                 "输入错误，请输入整数",
@@ -438,20 +506,6 @@ public class MainWindow extends JFrame implements ActionListener {
         newCanvasSettings.add(height);
         newCanvasSettings.add(okay);
         newCanvasSettings.add(cancel);
-
-        Dimension d = new Dimension(w[0], h[0]);
-        getCanvas().setSize(d);
-        getCanvas().setMinimumSize(d);
-        getCanvas().setMaximumSize(d);
-        getCanvas().repaint();
-        this.canvas.setSize(d);
-        this.canvas.setBackground(Color.WHITE);
-        this.setCanvasSizeLabel(w[0], h[0]);
-        // todo: when the canvas gets bigger, the background cannot gets bigger at the same time.
-        // confusing...
-
-
-        // ---------- *** ----------
     }
 
     private void createUIComponents() {

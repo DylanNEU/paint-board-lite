@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 修复了带颜色填充的形状问题">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 完成了吸管工具的功能，修复了吸管工具位置偏移的问题。">
+      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/TextDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +56,9 @@
     &quot;last_opened_file_path&quot;: &quot;E:/Java/JavaProjects/drawingboard&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
   }
 }</component>
@@ -104,7 +112,9 @@
       <workItem from="1668510448196" duration="4495000" />
       <workItem from="1668605142027" duration="8691000" />
       <workItem from="1668743305600" duration="11117000" />
-      <workItem from="1668770986983" duration="3200000" />
+      <workItem from="1668770986983" duration="16315000" />
+      <workItem from="1668790038336" duration="150000" />
+      <workItem from="1668817958209" duration="9774000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -225,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668773536770</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Dylan commit: 完成了吸管工具的功能，修复了吸管工具位置偏移的问题。">
+      <created>1668775150342</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1668775150342</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +279,8 @@
     <MESSAGE value="Dylan commit: 完成了搜索功能。现在可以模糊匹配搜索了。" />
     <MESSAGE value="Dylan commit: 加入快捷颜色按钮的功能。&#10;todo: 带填充的形状部分寄了" />
     <MESSAGE value="Dylan commit: 修复了带颜色填充的形状问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 修复了带颜色填充的形状问题" />
+    <MESSAGE value="Dylan commit: 完成了吸管工具的功能，修复了吸管工具位置偏移的问题。" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 完成了吸管工具的功能，修复了吸管工具位置偏移的问题。" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

@@ -31,8 +31,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
     private Stack<Shape> preview;
     private BufferedImage canvas;
     private Graphics2D graphics2D;
-    // todo: add Text Dialog window and so on.
-//    private TextDialog textDialog;
+    private TextDialog textDialog;
     private BasicTools actTool;
     private ArcStatus drawStatus = NOT_DRAWING;
     private ArcStatus direction = NO_DIRECTION;
@@ -61,8 +60,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         //System.out.println("create");
         currentColor = Color.BLACK;
         lastColor = Color.WHITE;
-//        todo: text dialog
-//        textDialog = new TextDialog(StartUp.mainWindow);
+        textDialog = new TextDialog(Main.mainWindow);
 
         this.shapes = new Stack<>();
         this.removed = new Stack<>();
@@ -85,8 +83,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         actTool = PENCIL;
         currentColor = Color.BLACK;
         lastColor = Color.WHITE;
-//        todo: complete text dialog.
-//        textDialog = new TextDialog(Main.mainWindow);
+        textDialog = new TextDialog(Main.mainWindow);
         this.shapes = new Stack<>();
         this.removed = new Stack<>();
         this.preview = new Stack<>();
@@ -105,6 +102,12 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         setMinimumSize(d);
         repaint();
         Main.mainWindow.setCanvasSizeLabel(w, h);
+    }
+
+    public void setBICanvas(Dimension d) {
+        canvas = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_ARGB);
+        graphics2D = canvas.createGraphics();
+        clear(d.width, d.height);
     }
 
     public void paintComponent(Graphics g) {
@@ -243,6 +246,15 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         Dimension dimension = Main.mainWindow.getCanvas().getSize();
         graphics2D.setPaint(Color.white);
         graphics2D.fillRect(0, 0, dimension.width, dimension.height);
+        shapes.removeAllElements();
+        removed.removeAllElements();
+        Main.mainWindow.getCanvas().repaint();
+        graphics2D.setColor(currentColor);
+    }
+
+    public void clear(int x, int y) {
+        graphics2D.setPaint(Color.white);
+        graphics2D.fillRect(0, 0, x, y);
         shapes.removeAllElements();
         removed.removeAllElements();
         Main.mainWindow.getCanvas().repaint();
@@ -401,10 +413,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             shapes.push(preview.pop());
             preview.clear();
         } else if (actTool == TEXT) {
-            // todo: there needs a text dialog.
-
-
-            // -------- *** ---------
+            int res = textDialog.showCustomDialog(Main.mainWindow);
+            if (res == TextDialog.APPLY_OPTION) {
+                shapes.push(new Shape(x1, y1, textDialog.getFontSize(), textDialog.getFont(),
+                        currentColor, stroke, BasicTools.TEXT, textDialog.getText()));
+            }
         } else if (actTool == BUCKET) {
             // todo: there needs a bucket tool.
 

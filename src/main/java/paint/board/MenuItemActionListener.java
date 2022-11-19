@@ -30,7 +30,7 @@ public class MenuItemActionListener implements ActionListener {
 
     }
 
-    private static BufferedImage createPanel(JPanel panel) {
+    public static BufferedImage createPanel(JPanel panel) {
         int width = panel.getWidth();
         int height = panel.getHeight();
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);

@@ -1,6 +1,8 @@
 package paint.board;
 
 import java.awt.*;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
 
 
 public class Shape {
@@ -35,11 +37,17 @@ public class Shape {
     private Font font;
 
     public Shape(int x1, int y1, int fontSize, Font font, Color color, BasicStroke stroke, BasicTools shape, String message) {
+
+        FontRenderContext frc = new FontRenderContext(new AffineTransform(), true, true);
+        Rectangle rec = font.getStringBounds("a", frc).getBounds();
+        int height = (int) rec.getHeight();
+        int width = (int) rec.getWidth();
+
         this.x1 = x1;
         this.y1 = y1;
-        this.y2 = 0;
+        this.y2 = y1 - height;
         this.font = font;
-        this.x2 = fontSize;
+        this.x2 = x1 + width * message.length();
         this.color = color;
         this.stroke = stroke;
         this.shape = shape;
