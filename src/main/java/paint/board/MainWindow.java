@@ -241,7 +241,6 @@ public class MainWindow extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO: complete action-performed method
         if (e.getSource() == moreColor) {
             displayColorChooser();
         } else if (e.getSource() == pencil) {
@@ -539,7 +538,6 @@ public class MainWindow extends JFrame implements ActionListener {
 
     public void setMousePositionLabel(int i, int j) {
         if (CanvasPanelListener.isInCanvas) {
-            // todo: there needs a label to display the position of cursor.
             CursorPositionLabel.setText("x: " + i + ", y: " + j);
         } else {
             CursorPositionLabel.setText("");

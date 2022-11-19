@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 基本完成了添加文本的功能，不过刷新略微有点问题。&#10;todo: 点击ok后，文本不会立即显示在画布上">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/TextDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/TextDialog.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +110,7 @@
       <workItem from="1668770986983" duration="16315000" />
       <workItem from="1668790038336" duration="150000" />
       <workItem from="1668817958209" duration="10103000" />
+      <workItem from="1668848574741" duration="1171000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -240,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668829775581</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。">
+      <created>1668848636814</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1668848636814</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +291,8 @@
     <MESSAGE value="Dylan commit: 修复了带颜色填充的形状问题" />
     <MESSAGE value="Dylan commit: 完成了吸管工具的功能，修复了吸管工具位置偏移的问题。" />
     <MESSAGE value="Dylan commit: 基本完成了添加文本的功能，不过刷新略微有点问题。&#10;todo: 点击ok后，文本不会立即显示在画布上" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 基本完成了添加文本的功能，不过刷新略微有点问题。&#10;todo: 点击ok后，文本不会立即显示在画布上" />
+    <MESSAGE value="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

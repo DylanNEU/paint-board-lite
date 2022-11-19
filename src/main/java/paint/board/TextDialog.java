@@ -30,14 +30,14 @@ public class TextDialog extends JDialog implements ActionListener, ChangeListene
     private int userResponse;
 
     public TextDialog(Frame owner) {
-        super(owner);
+        super(owner, "文本", true);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         fontList = ge.getAvailableFontFamilyNames();
         sizeBox = new JComboBox<>(fontSizeList);
         fontBox = new JComboBox<>(fontList);
         preview = new JTextField("你好世界HelloWorld!");
         preview.setHorizontalAlignment(SwingConstants.CENTER);
-        preview.setFont(new Font("宋体", Font.PLAIN, 25));
+        preview.setFont(new Font("宋体", Font.PLAIN, 21));
         preview.setPreferredSize(new Dimension(220, 60));
         preview.setEditable(false);
 
@@ -46,7 +46,7 @@ public class TextDialog extends JDialog implements ActionListener, ChangeListene
         ok.setPreferredSize(cancel.getPreferredSize());
 
         input = new JTextField("你好世界HelloWorld!");
-        input.setFont(new Font("宋体", Font.PLAIN, 25));
+//        input.setFont(new Font("宋体", Font.PLAIN, 21));
         input.setPreferredSize(new Dimension(220, 60));
         input.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -65,8 +65,10 @@ public class TextDialog extends JDialog implements ActionListener, ChangeListene
             }
         });
 
-        sizeBox.addActionListener(e -> update());
-        fontBox.addActionListener(e -> update());
+        sizeBox.setSelectedIndex(3);
+        fontBox.setSelectedItem("宋体");
+        sizeBox.addActionListener(this);
+        fontBox.addActionListener(this);
         ok.addActionListener(this);
         cancel.addActionListener(this);
         input.addActionListener(this);

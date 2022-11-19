@@ -372,7 +372,6 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             y += Main.mainWindow.getStretcher().getLocation().y;
             x += getLocation().x;
             y += getLocation().y;
-            // todo: why?
             x += 153;
             y += 92;
             // ** ---------------- **
@@ -417,6 +416,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
             if (res == TextDialog.APPLY_OPTION) {
                 shapes.push(new Shape(x1, y1, textDialog.getFontSize(), textDialog.getFont(),
                         currentColor, stroke, BasicTools.TEXT, textDialog.getText()));
+                repaint();
             }
         } else if (actTool == BUCKET) {
             // todo: there needs a bucket tool.

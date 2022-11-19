@@ -13,7 +13,6 @@ import java.io.IOException;
 public class MenuItemActionListener implements ActionListener {
 
     private void openImage(File f) {
-        // todo: openImage method needs a method to get draw panel listener.
         try {
             var img = ImageIO.read(f);
             Main.mainWindow.getCanvas().setImage(img);
