@@ -36,13 +36,12 @@ public class Shape {
     private BasicTools shape;
     private Font font;
 
-    public Shape(int x1, int y1, int fontSize, Font font, Color color, BasicStroke stroke, BasicTools shape, String message) {
+    public Shape(int x1, int y1, Font font, Color color, BasicStroke stroke, BasicTools shape, String message) {
 
         FontRenderContext frc = new FontRenderContext(new AffineTransform(), true, true);
         Rectangle rec = font.getStringBounds("a", frc).getBounds();
         int height = (int) rec.getHeight();
         int width = (int) rec.getWidth();
-
         this.x1 = x1;
         this.y1 = y1;
         this.y2 = y1 - height;

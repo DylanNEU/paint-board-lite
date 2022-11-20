@@ -414,7 +414,7 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         } else if (actTool == TEXT) {
             int res = textDialog.showCustomDialog(Main.mainWindow);
             if (res == TextDialog.APPLY_OPTION) {
-                shapes.push(new Shape(x1, y1, textDialog.getFontSize(), textDialog.getFont(),
+                shapes.push(new Shape(x1, y1, textDialog.getFont(),
                         currentColor, stroke, BasicTools.TEXT, textDialog.getText()));
                 repaint();
             }
@@ -504,6 +504,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         Main.mainWindow.getCanvas().repaint();
     }
 
+    public void addNewShape(Shape s) {
+        shapes.push(s);
+        Main.mainWindow.getCanvas().repaint();
+    }
+
     @Override
     public void mouseMoved(MouseEvent e) {
         Main.mainWindow.setMousePositionLabel(e.getX(), e.getY());
@@ -540,7 +545,11 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
         }
     }
 
-    public void getShapes() {
-        System.out.println(shapes);
+//    public void getShapes() {
+//        System.out.println(shapes);
+//    }
+
+    public BasicTools getActTool() {
+        return this.actTool;
     }
 }

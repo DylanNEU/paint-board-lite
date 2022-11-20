@@ -1,7 +1,10 @@
 package paint.board;
 
+import org.xml.sax.SAXException;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
@@ -92,6 +95,7 @@ public class MainWindow extends JFrame implements ActionListener {
     private MenuItemActionListener menuItemActionListener;
     private JList<String> shapeList;
     private JRadioButton fill;
+    private JLabel curToolLabel;
     private JMenuItem redoM;
     private JMenuItem undoM;
 
@@ -144,6 +148,7 @@ public class MainWindow extends JFrame implements ActionListener {
                     case "铅笔" -> ((CanvasPanelListener) canvas).setTool(PENCIL);
                     default -> ((CanvasPanelListener) canvas).setTool(NULL);
                 }
+                setCurToolLabel();
             }
         });
 
@@ -228,6 +233,14 @@ public class MainWindow extends JFrame implements ActionListener {
                 }
             });
             frame.setVisible(true);
+        });
+        button6.addActionListener(e -> {
+            File f = new File("1.xml");
+            try {
+                XMLHandler xml = new XMLHandler(f);
+            } catch (ParserConfigurationException | SAXException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 
@@ -323,6 +336,7 @@ public class MainWindow extends JFrame implements ActionListener {
             Main.mainWindow.getCanvas().setTransparent(!fill.isSelected());
         }
 //        ((CanvasPanelListener) canvas).getShapes();
+        setCurToolLabel();
     }
 
     private void initBoard() {
@@ -379,7 +393,7 @@ public class MainWindow extends JFrame implements ActionListener {
         drag.setIcon(new ImageIcon("assets/move.png"));
 
         shapeList.setListData(defaultList);
-
+        setCurToolLabel();
     }
 
     private void setActionLis(JButton red, JButton green, JButton blue, JButton yellow, JButton magenta, JButton cyan, JButton lightGreenBlue, JButton lightGreen, JButton lightBlue, JButton lightOrange) {
@@ -541,6 +555,26 @@ public class MainWindow extends JFrame implements ActionListener {
             CursorPositionLabel.setText("x: " + i + ", y: " + j);
         } else {
             CursorPositionLabel.setText("");
+        }
+    }
+
+    public void setCurToolLabel() {
+        switch (((CanvasPanelListener) canvas).getActTool()) {
+            case NULL -> curToolLabel.setText("未选择工具");
+            case PENCIL -> curToolLabel.setText("铅笔");
+            case LINE -> curToolLabel.setText("直线");
+            case ERASER -> curToolLabel.setText("橡皮");
+            case TEXT -> curToolLabel.setText("文本工具");
+            case STRAW -> curToolLabel.setText("吸管");
+            case DRAG -> curToolLabel.setText("拖拽");
+            case TRIANGLE -> curToolLabel.setText("三角形");
+            case RECTANGLE -> curToolLabel.setText("矩形");
+            case PENTAGON -> curToolLabel.setText("五边形");
+            case HEXAGON -> curToolLabel.setText("六边形");
+            case ELLIPTICAL -> curToolLabel.setText("圆形");
+            case COMPASS -> curToolLabel.setText("四角星");
+            case PENTAGRAM -> curToolLabel.setText("五角星");
+            default -> curToolLabel.setText("");
         }
     }
 }

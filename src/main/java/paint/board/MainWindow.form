@@ -517,12 +517,12 @@
           </scrollpane>
         </children>
       </grid>
-      <grid id="cd044" layout-manager="GridLayoutManager" row-count="1" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="cd044" layout-manager="GridLayoutManager" row-count="1" column-count="8" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="-1" height="17"/>
-            <maximum-size width="-1" height="17"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="25"/>
+            <maximum-size width="-1" height="25"/>
           </grid>
         </constraints>
         <properties>
@@ -533,12 +533,12 @@
         <children>
           <hspacer id="b0d2c">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="1" hsize-policy="7" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
           </hspacer>
           <component id="fcd54" class="javax.swing.JLabel" binding="canvasSizeLabel">
             <constraints>
-              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="500*500"/>
@@ -546,9 +546,9 @@
           </component>
           <component id="d718f" class="javax.swing.JButton" binding="save">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                <preferred-size width="40" height="-1"/>
-                <maximum-size width="40" height="-1"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="60" height="20"/>
+                <maximum-size width="60" height="20"/>
               </grid>
             </constraints>
             <properties>
@@ -557,18 +557,18 @@
           </component>
           <component id="9c952" class="javax.swing.JButton" binding="create">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
-                <preferred-size width="40" height="-1"/>
-                <maximum-size width="40" height="-1"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="60" height="20"/>
+                <maximum-size width="60" height="20"/>
               </grid>
             </constraints>
             <properties>
-              <text value=""/>
+              <text value="新建"/>
             </properties>
           </component>
           <component id="d6b3f" class="javax.swing.JButton" binding="fullScreen">
             <constraints>
-              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
+              <grid row="0" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
                 <maximum-size width="20" height="-1"/>
               </grid>
@@ -588,7 +588,7 @@
           </component>
           <component id="5671e" class="javax.swing.JButton" binding="button6" default-binding="true">
             <constraints>
-              <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="2" indent="0" use-parent-layout="false">
                 <preferred-size width="20" height="-1"/>
                 <maximum-size width="20" height="-1"/>
               </grid>
@@ -596,6 +596,14 @@
             <properties>
               <hideActionText value="false"/>
               <text value=""/>
+            </properties>
+          </component>
+          <component id="5e5fe" class="javax.swing.JLabel" binding="curToolLabel">
+            <constraints>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Label"/>
             </properties>
           </component>
         </children>
