@@ -56,7 +56,7 @@ public class MainWindow extends JFrame implements ActionListener {
     };
     private JButton save;
     private JButton fullScreen;
-    private JButton button6;
+    private JButton open;
     private JLabel CursorPositionLabel;
     private JLabel canvasSizeLabel;
     private JButton curColor;
@@ -96,8 +96,11 @@ public class MainWindow extends JFrame implements ActionListener {
     private JList<String> shapeList;
     private JRadioButton fill;
     private JLabel curToolLabel;
+    private JSpinner stroke;
+    private JSpinner slider1;
     private JMenuItem redoM;
     private JMenuItem undoM;
+    private JMenuItem saveProject;
 
     public MainWindow() throws UnsupportedLookAndFeelException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         super("轻画板");
@@ -154,10 +157,16 @@ public class MainWindow extends JFrame implements ActionListener {
 
         save.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
-            fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("画板", "pdml"));
             if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
-                File file = new File(fileChooser.getSelectedFile() + ".png");
-                MenuItemActionListener.saveImage(file);
+                var s = fileChooser.getSelectedFile();
+                File f = new File(s + (s.toString().contains(".pdml") ? "" : ".pdml"));
+                try {
+                    XMLHandler xml = new XMLHandler();
+                    xml.saveProject(f);
+                } catch (ParserConfigurationException | SAXException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -234,13 +243,26 @@ public class MainWindow extends JFrame implements ActionListener {
             });
             frame.setVisible(true);
         });
-        button6.addActionListener(e -> {
-            File f = new File("1.xml");
-            try {
-                XMLHandler xml = new XMLHandler(f);
-            } catch (ParserConfigurationException | SAXException ex) {
-                throw new RuntimeException(ex);
+
+        open.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
+            fileChooser.setFileFilter(new FileNameExtensionFilter("画板", "pdml"));
+            if (fileChooser.showOpenDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
+                File f = fileChooser.getSelectedFile();
+                try {
+                    XMLHandler xml = new XMLHandler();
+                    xml.parseXML(f);
+                } catch (ParserConfigurationException | SAXException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
+        });
+
+        SpinnerNumberModel snm = new SpinnerNumberModel(1, 1, 10, 1);
+        stroke.setModel(snm);
+        stroke.addChangeListener(e -> {
+            int n = (int) stroke.getValue();
+            ((CanvasPanelListener) canvas).setStroke(n);
         });
     }
 
@@ -347,21 +369,25 @@ public class MainWindow extends JFrame implements ActionListener {
         for (JMenu jMenu : Arrays.asList(this.view, this.edit, this.file)) {
             jMenu.setFont(mainFont);
         }
+        saveProject = new JMenuItem("保存");
         newFile = new JMenuItem("新建");
         openFile = new JMenuItem("打开");
-        saveFile = new JMenuItem("保存");
+        saveFile = new JMenuItem("导出");
+        saveProject.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
         newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
         openFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_DOWN_MASK));
-        saveFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
-        for (JMenuItem jMenuItem : Arrays.asList(this.newFile, this.openFile, this.saveFile)) {
+        saveFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_DOWN_MASK));
+        for (JMenuItem jMenuItem : Arrays.asList(this.newFile, this.openFile, this.saveFile, this.saveProject)) {
             jMenuItem.setFont(mainFont);
             jMenuItem.addActionListener(menuItemActionListener);
         }
         newFile.setName("newFile");
+        saveProject.setName("saveProject");
         openFile.setName("openFile");
         saveFile.setName("saveFile");
         file.add(newFile);
         file.add(openFile);
+        file.add(saveProject);
         file.add(saveFile);
         undoM = new JMenuItem("撤销");
         redoM = new JMenuItem("重做");

@@ -136,8 +136,8 @@ public class Shape {
         } else {
             isChosen = 0;
         }
-        System.out.println("x = " + x + ", y = " + y);
-        System.out.println("{x1 = " + x1 + ", y1 = " + y1 + "}, {x2= " + x2 + ", y2 = " + y2 + "}");
+//        System.out.println("x = " + x + ", y = " + y);
+//        System.out.println("{x1 = " + x1 + ", y1 = " + y1 + "}, {x2= " + x2 + ", y2 = " + y2 + "}");
         return isChosen;
     }
 
@@ -398,5 +398,36 @@ public class Shape {
 
     public Color getFillColor() {
         return filledColor;
+    }
+
+    public String toXML() {
+        StringBuilder sbf = new StringBuilder();
+        sbf.append("<");
+        if (this.shape == BasicTools.TEXT) {
+            sbf.append("text x1=\"").append(this.x1).append("\" y1=\"").append(this.y1).append("\" fontName=\"");
+            sbf.append(this.font.getName()).append("\" fontSize=\"").append(this.font.getSize()).append("\" ");
+            sbf.append("message=\" ").append(this.message).append("\" c1=\"").append(this.color.getRed());
+            sbf.append(",").append(this.color.getGreen()).append(",").append(this.color.getBlue());
+            sbf.append("\" />");
+        } else {
+            sbf.append("shape type=\"");
+            switch (this.shape) {
+                case LINE -> sbf.append("line");
+                case RECTANGLE -> sbf.append("rectangle");
+                case ELLIPTICAL -> sbf.append("elliptical");
+                case PENTAGON -> sbf.append("pentagon");
+                case PENTAGRAM -> sbf.append("pentagram");
+                case COMPASS -> sbf.append("compass");
+                case HEXAGON -> sbf.append("hexagon");
+                case TRIANGLE -> sbf.append("triangle");
+            }
+            sbf.append("\" x1=\"").append(this.x1).append("\" y1=\"").append(this.y1);
+            sbf.append("\" x2=\"").append(this.x2).append("\" y2=\"").append(this.y2);
+            sbf.append("\" c1=\"").append(this.color.getRed()).append(",").append(this.color.getGreen());
+            sbf.append(",").append(this.color.getBlue()).append("\" stroke=\"").append((int) this.stroke.getLineWidth());
+            sbf.append("\" c2=\"").append(this.filledColor == null ? 255 : this.filledColor.getRed()).append(",").append(this.filledColor == null ? 255 : this.filledColor.getGreen());
+            sbf.append(",").append(this.filledColor == null ? 255 : this.filledColor.getBlue()).append("\" trans=\"").append((this.transparent)).append("\" />");
+        }
+        return sbf.toString();
     }
 }

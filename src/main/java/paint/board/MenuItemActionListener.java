@@ -1,8 +1,11 @@
 package paint.board;
 
+import org.xml.sax.SAXException;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,12 +55,31 @@ public class MenuItemActionListener implements ActionListener {
         String name = ((JMenuItem) e.getSource()).getName();
         switch (name) {
             case "newFile" -> Main.mainWindow.createNewCanvas();
+            case "saveProject" -> {
+                JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
+                fileChooser.setFileFilter(new FileNameExtensionFilter("画板", "pdml"));
+                if (fileChooser.showSaveDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
+                    var s = fileChooser.getSelectedFile();
+                    File f = new File(s + (s.toString().contains(".pdml") ? "" : ".pdml"));
+                    try {
+                        XMLHandler xml = new XMLHandler();
+                        xml.saveProject(f);
+                    } catch (ParserConfigurationException | SAXException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
             case "openFile" -> {
                 JFileChooser fileChooser = new JFileChooser(new File(".\\export\\"));
-                fileChooser.setFileFilter(new FileNameExtensionFilter("图片", "png", "jpg"));
+                fileChooser.setFileFilter(new FileNameExtensionFilter("画板", "pdml"));
                 if (fileChooser.showOpenDialog(Main.mainWindow) == JFileChooser.APPROVE_OPTION) {
                     File f = fileChooser.getSelectedFile();
-                    openImage(f);
+                    try {
+                        XMLHandler xml = new XMLHandler();
+                        xml.parseXML(f);
+                    } catch (ParserConfigurationException | SAXException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             }
             case "saveFile" -> {
@@ -71,9 +93,8 @@ public class MenuItemActionListener implements ActionListener {
             case "Redo" -> Main.mainWindow.getCanvas().redo();
             case "Undo" -> Main.mainWindow.getCanvas().undo();
             default -> {
-                return;
             }
         }
-        System.out.println(e);
+//        System.out.println(e);
     }
 }

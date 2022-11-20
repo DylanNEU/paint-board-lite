@@ -14,13 +14,13 @@ public class ShapeDefaultHandler extends DefaultHandler {
     @Override
     public void startDocument() throws SAXException {
         super.startDocument();
-        System.out.println("解析xml文档开始");
+//        System.out.println("解析xml文档开始");
     }
 
     @Override
     public void endDocument() throws SAXException {
         super.endDocument();
-        System.out.println("解析xml文档结束");
+//        System.out.println("解析xml文档结束");
     }
 
     @Override

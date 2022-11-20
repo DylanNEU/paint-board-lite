@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PaintBoardLite:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 修复了文本不能即时显示的问题，完成了添加文本的功能。">
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/ShapeDefaultHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/paint/board/XMLHandler.java" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/ShapeDefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/ShapeDefaultHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/XMLHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,26 +46,26 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="false" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;306&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Java/JavaProjects/drawingboard&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;项目&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "306",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "last_opened_file_path": "E:/Java/JavaProjects/PaintBoardLite/assets",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "工件",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="paint.board" />
@@ -114,7 +120,7 @@
       <workItem from="1668790038336" duration="150000" />
       <workItem from="1668817958209" duration="10103000" />
       <workItem from="1668848574741" duration="5899000" />
-      <workItem from="1668930209548" duration="5843000" />
+      <workItem from="1668930209548" duration="17581000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -263,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668850141143</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。">
+      <created>1668936410695</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1668936410695</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +317,8 @@
     <MESSAGE value="Dylan commit: 基本完成了添加文本的功能，不过刷新略微有点问题。&#10;todo: 点击ok后，文本不会立即显示在画布上" />
     <MESSAGE value="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。" />
     <MESSAGE value="Dylan commit: 修复了文本不能即时显示的问题，完成了添加文本的功能。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 修复了文本不能即时显示的问题，完成了添加文本的功能。" />
+    <MESSAGE value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

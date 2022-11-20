@@ -548,8 +548,15 @@ public class CanvasPanelListener extends JPanel implements MouseListener, MouseM
 //    public void getShapes() {
 //        System.out.println(shapes);
 //    }
+public void setStroke(int n) {
+    this.stroke = new BasicStroke(n);
+}
 
     public BasicTools getActTool() {
         return this.actTool;
+    }
+
+    public Stack<Shape> getShapes() {
+        return shapes;
     }
 }
