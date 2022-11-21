@@ -414,9 +414,18 @@ public class MainWindow extends JFrame implements ActionListener {
         straw.addActionListener(this);
         text.addActionListener(this);
 
-        pencil.setIcon(new ImageIcon("assets/pencil.png"));
-        eraser.setIcon(new ImageIcon("assets/eraser.png"));
-        drag.setIcon(new ImageIcon("assets/move.png"));
+        pencil.setIcon(new ImageIcon("./assets/pencil.png"));
+        eraser.setIcon(new ImageIcon("./assets/eraser.png"));
+        drag.setIcon(new ImageIcon("./assets/move.png"));
+        line.setIcon(new ImageIcon("./assets/line.png"));
+        text.setIcon(new ImageIcon("./assets/text.png"));
+        straw.setIcon(new ImageIcon("./assets/straw.png"));
+        searchBtn.setIcon(new ImageIcon("./assets/search.png"));
+        clearBtn.setIcon(new ImageIcon("./assets/close.png"));
+        save.setIcon(new ImageIcon("./assets/save.png"));
+        open.setIcon(new ImageIcon("./assets/folder.png"));
+        create.setIcon(new ImageIcon("./assets/add.png"));
+        fullScreen.setIcon(new ImageIcon("./assets/full.png"));
 
         shapeList.setListData(defaultList);
         setCurToolLabel();

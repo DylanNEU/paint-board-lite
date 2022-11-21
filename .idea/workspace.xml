@@ -9,15 +9,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/CanvasPanelListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/arrow-left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/arrow-right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/close.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/folder.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/folder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/move.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/move.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/pic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/save.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/save.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shuffling-banner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/text.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/text.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MenuItemActionListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/ShapeDefaultHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/ShapeDefaultHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/XMLHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/XMLHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,24 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH": "306",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "last_opened_file_path": "E:/Java/JavaProjects/PaintBoardLite/assets",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "工件",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH&quot;: &quot;306&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Java/JavaProjects/PaintBoardLite/assets&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;工件&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="paint.board" />
@@ -120,7 +125,11 @@
       <workItem from="1668790038336" duration="150000" />
       <workItem from="1668817958209" duration="10103000" />
       <workItem from="1668848574741" duration="5899000" />
-      <workItem from="1668930209548" duration="17581000" />
+      <workItem from="1668930209548" duration="17969000" />
+      <workItem from="1668962161708" duration="86000" />
+      <workItem from="1668962263587" duration="109000" />
+      <workItem from="1669001826886" duration="355000" />
+      <workItem from="1669045769985" duration="2129000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -276,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668936410695</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe">
+      <created>1668962002184</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1668962002184</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +334,8 @@
     <MESSAGE value="Dylan commit: 补充提交说明:上次提交中还完成了大部分的readme文件编写，实现了全屏展示功能。" />
     <MESSAGE value="Dylan commit: 修复了文本不能即时显示的问题，完成了添加文本的功能。" />
     <MESSAGE value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
+    <MESSAGE value="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
