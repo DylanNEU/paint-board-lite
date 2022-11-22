@@ -6,6 +6,7 @@
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![jdk](https://img.shields.io/badge/jdk-18-red)
+![Java](https://img.shields.io/badge/Java-Swing-blue)
 
 ## 作者
 
