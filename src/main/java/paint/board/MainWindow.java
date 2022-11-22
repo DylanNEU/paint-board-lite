@@ -414,6 +414,8 @@ public class MainWindow extends JFrame implements ActionListener {
         straw.addActionListener(this);
         text.addActionListener(this);
 
+
+        this.setIconImage(new ImageIcon("./assets/logo.png").getImage());
         pencil.setIcon(new ImageIcon("./assets/pencil.png"));
         eraser.setIcon(new ImageIcon("./assets/eraser.png"));
         drag.setIcon(new ImageIcon("./assets/move.png"));
@@ -474,6 +476,7 @@ public class MainWindow extends JFrame implements ActionListener {
 
     public void createNewCanvas() {
         JFrame newCanvasSettings = new JFrame();
+        newCanvasSettings.setIconImage(new ImageIcon("./assets/logo.png").getImage());
         newCanvasSettings.setTitle("新建画布");
         newCanvasSettings.setSize(350, 200);
         newCanvasSettings.setResizable(false);

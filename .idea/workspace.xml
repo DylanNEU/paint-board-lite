@@ -9,19 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe">
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 基本完成开发，更新了图标，准备发布release">
+      <change afterPath="$PROJECT_DIR$/assets/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/arrow-left.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/arrow-right.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/close.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/close.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/folder.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/folder.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/move.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/move.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/pic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/save.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/save.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/search.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/shuffling-banner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/text.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/text.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +119,8 @@
       <workItem from="1668962161708" duration="86000" />
       <workItem from="1668962263587" duration="109000" />
       <workItem from="1669001826886" duration="355000" />
-      <workItem from="1669045769985" duration="2129000" />
+      <workItem from="1669045769985" duration="2840000" />
+      <workItem from="1669102747266" duration="886000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -292,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668962002184</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Dylan commit: 基本完成开发，更新了图标，准备发布release">
+      <created>1669047980835</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1669047980835</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +333,8 @@
     <MESSAGE value="Dylan commit: 修复了文本不能即时显示的问题，完成了添加文本的功能。" />
     <MESSAGE value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
     <MESSAGE value="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe" />
+    <MESSAGE value="Dylan commit: 基本完成开发，更新了图标，准备发布release" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 基本完成开发，更新了图标，准备发布release" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
