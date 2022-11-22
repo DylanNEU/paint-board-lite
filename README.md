@@ -2,7 +2,7 @@
 
 东北大学 计算机科学与工程学院 计算机科学与技术专业2020级
 
-《Java程序设计》 期末大作业
+《Java语言与程序设计》 期末大作业
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 ![jdk](https://img.shields.io/badge/jdk-18-red)
