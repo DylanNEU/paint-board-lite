@@ -1,18 +1,29 @@
-## Paint Board Lite
+# PaintBoardLite - 轻画板
 
-#### design by Deng-lin from NEU
+东北大学 计算机科学与工程学院 计算机科学与技术专业2020级
 
-使用JetBrains IntelliJ IDEA开发, 基于Oracle OpenJDK version 18
+《Java程序设计》 期末大作业
 
-### 源代码构建方法
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+![jdk](https://img.shields.io/badge/jdk-18-red)
 
-1. 使用IDEA或者eclipse打开项目
-2. 打开src/main/java/paint.board文件夹
-3. 打开main.java文件, 将其作为主类进行构建并运行
-4. 若出现java版本异常，请检查JDK和SDK级别。项目使用的是Oracle OpenJDK 18进行开发。
-    - 项目使用了IntelliJ IDEA Designer Core, 若不兼容请尝试更新版本。
+## 作者
 
-### 实现功能
+- [@DylanNEU](https://github.com/DylanNEU)
+
+## 开发
+
+项目使用IntelliJ IDEA开发，基于Oracle OpenJDK version 18。
+项目主类为Main，使用最新版本的IntelliJ IDEA打开，构建工程即可。
+
+    1. 使用IDEA或者eclipse打开项目
+    2. 打开src/main/java/paint.board文件夹
+    3. 打开main.java文件, 将其作为主类进行构建并运行
+    4. 若出现java版本异常，请检查JDK和SDK级别。项目使用的是Oracle OpenJDK 18进行开发。
+        - 项目使用了IntelliJ IDEA Designer Core, 若不兼容请尝试更新版本。
+        - 项目语言级别为Java 18。
+
+## 特性
 
 - 基本功能
     - [x] 新建一个空白的文件
@@ -31,11 +42,33 @@
     - [x] 操作的撤销与重做
     - [x] 按照名称模糊搜索
     - [x] 设置画笔、插入图像、使用橡皮擦
-    - [ ] 利用xml对画布项目进行存储
+    - [x] 利用xml对画布项目进行存储
 
-### 画图板使用方法
+## 安装
+
+在运行前务必保证已经安装了JDK或者JRE。推荐使用JDK 18及以上版本。
+
+- 下载release中的PaintBoardLite_jar.zip（看好是release中的）
+- 或者下载源代码，在out/artifacts/PaintBoardLite_jar/中找到PaintBoardLite.jar
+- 准备好JRE或者JDK
+- 解压压缩包，在地址栏输入cmd按回车，在终端中输入
+
+```bash
+java -jar PaintBoardLite.jar
+```
+
+- 也可以尝试直接双击PaintBoardLite.jar打开
+
+## 使用说明
 
 1. 界面分为三大区域, 左侧为工具区, 右上方为功能区, 右下为画图画板
+    - 保存
+        - 文件可以保存为pdml格式，一种我定义的xml格式，用于可恢复地保存当前工程
+        - 也可以导出为图片，请使用导出功能
+    - 打开
+        - 打开之前的画板文件（pdml）
+    - 导出
+        - 导出当前画板到图片格式
 2. 点击基本工具的按钮, 即可使用基本的画图功能, 包括:
     - 铅笔
         - 在画布上随便画线
@@ -53,6 +86,8 @@
         - 把吸到的颜色设置为当前的前景色
     - 文本
         - 在画布上放置一些文字
+        - 点击按钮后，任意点击画布位置，将会弹出文本编辑窗
+        - 点击ok将文字添加到画布上，位置即为刚刚点击的位置。
 3. 在颜色选择区域, 分为上方的前后景色, 中间的16中预置颜色, 以及下方的填充选项和其他颜色选择器按钮
     - 前景色, 后景色
         - 对于一个绘制的多边形而言, 前景色是指其边框的颜色, 后景色是指其填充的颜色
@@ -75,3 +110,12 @@
         - 按类别显示所有可绘制的形状
         - 点击任意一个形状条目, 即可在画板上用拖拽的方式绘制形状
         - 当进行搜索操作时, 列表将显示搜索结果, 点击清空即可恢复默认按类别分类的列表
+
+## 截图
+
+[![z3SUYV.png](https://s1.ax1x.com/2022/11/22/z3SUYV.png)](https://imgse.com/i/z3SUYV)
+
+## 支持
+
+如需支持，请发送电子邮件至 NEUDylan@outlook.com 或者直接写一个issue。
+

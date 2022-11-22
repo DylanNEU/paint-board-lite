@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: 基本完成开发，更新了图标，准备发布release">
-      <change afterPath="$PROJECT_DIR$/assets/logo.png" afterDir="false" />
+    <list default="true" id="330a18ea-b72c-4000-b68c-bb9d601be07c" name="变更" comment="Dylan commit: add jar file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/paint/board/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,7 @@
       <workItem from="1668962263587" duration="109000" />
       <workItem from="1669001826886" duration="355000" />
       <workItem from="1669045769985" duration="2840000" />
-      <workItem from="1669102747266" duration="886000" />
+      <workItem from="1669102747266" duration="5862000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1667749108114</created>
@@ -290,7 +289,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669047980835</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Dylan commit: 补上了程序logo">
+      <created>1669111720155</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1669111720155</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Dylan commit: release v1.1.0">
+      <created>1669112860300</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1669112860300</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Dylan commit: add jar file">
+      <created>1669113488720</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1669113488720</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,8 +330,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="initial commit" />
-    <MESSAGE value="Dylan commit: 新建了Shape形状类, BasicTools枚举。&#10;TODO: complete Shape Class, add setPosition method." />
     <MESSAGE value="Dylan commit: 新增多边形顶点位置计算方法，包括三角形、五边形、六边形。" />
     <MESSAGE value="Dylan commit: 添加shape的getter函数" />
     <MESSAGE value="Dylan commit:" />
@@ -334,7 +352,10 @@
     <MESSAGE value="Dylan commit: 基本完成了xml文件的解析工作。&#10;todo: xml的写入，整个程序即将完工进行收尾。" />
     <MESSAGE value="Dylan commit: 完成了xml文件的导入导出功能，实现了画板转为pdml文件；优化了保存、打开功能；添加了设置线条粗细功能。&#10;todo: 优化界面图标，打包jar，发布第一个release版本，打包exe" />
     <MESSAGE value="Dylan commit: 基本完成开发，更新了图标，准备发布release" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: 基本完成开发，更新了图标，准备发布release" />
+    <MESSAGE value="Dylan commit: 补上了程序logo" />
+    <MESSAGE value="Dylan commit: release v1.1.0" />
+    <MESSAGE value="Dylan commit: add jar file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dylan commit: add jar file" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
